@@ -22,6 +22,8 @@ export interface ClassDetailsData {
   type: 'Лекция' | 'Семинар' | 'Лабораторная';
   location?: string;
   instructor?: string;
+  visibleFrom?: Date;
+  visibleUntil?: Date;
 }
 
 // Represents classes that alternate between weeks for the same time slot.
@@ -45,3 +47,5 @@ export type DaySchedule = ScheduleSlot[];
 export type Schedule = {
   [key in DayKey]?: DaySchedule;
 };
+
+export type DateLike = string | Date | number | undefined | null;

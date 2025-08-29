@@ -1,20 +1,58 @@
 import React from "react";
 import type { DayKey } from "../types";
 import { DAY_MAP, SHORT_DAY_MAP, DAY_ORDER } from "../constants";
+import { useEffect, useState } from "react";
 
 interface DaySelectorProps {
   selectedDay: DayKey | "all";
   setSelectedDay: (day: DayKey | "all") => void;
 }
 
+function useIsMobile(breakpoint = 768) {
+  const isClient = typeof window !== "undefined";
+
+  const [isMobile, setIsMobile] = useState<boolean>(() => (isClient ? window.innerWidth < breakpoint : false));
+
+  useEffect(() => {
+    if (!isClient) return;
+
+    const mq = window.matchMedia(`(max-width: ${breakpoint - 1}px)`);
+
+    const handler = (e: MediaQueryListEvent | MediaQueryList) => {
+      setIsMobile("matches" in e ? e.matches : mq.matches);
+    };
+
+    if ("addEventListener" in mq) {
+      mq.addEventListener("change", handler as EventListener);
+    } else {
+      // @ts-ignore
+      mq.addListener(handler);
+    }
+
+    setIsMobile(mq.matches);
+
+    return () => {
+      if ("removeEventListener" in mq) {
+        mq.removeEventListener("change", handler as EventListener);
+      } else {
+        // @ts-ignore
+        mq.removeListener(handler);
+      }
+    };
+  }, [breakpoint, isClient]);
+
+  return isMobile;
+}
+
 const DaySelector: React.FC<DaySelectorProps> = ({ selectedDay, setSelectedDay }) => {
   const days: (DayKey | "all")[] = [...DAY_ORDER, "all"];
+  const isMobile = useIsMobile(300);
 
   const getButtonText = (day: DayKey | "all") => {
     if (day === "all") return "Вся неделя";
     const dayName = DAY_MAP[day];
     // Use a more robust check for mobile viewports
-    if (typeof window !== "undefined" && window.innerWidth < 768) {
+    if (isMobile) {
       return SHORT_DAY_MAP[day];
     }
     return dayName;
