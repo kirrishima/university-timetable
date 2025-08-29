@@ -20,8 +20,8 @@ export type DayKey = 'monday' | 'tuesday' | 'wednesday' | 'thursday' | 'friday' 
 export interface ClassDetailsData {
   name: string;
   type: 'Лекция' | 'Семинар' | 'Лабораторная';
-  location: string;
-  instructor: string;
+  location?: string;
+  instructor?: string;
 }
 
 // Represents classes that alternate between weeks for the same time slot.

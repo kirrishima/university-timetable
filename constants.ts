@@ -18,81 +18,101 @@ export const DAY_ORDER: DayKey[] = ['monday', 'tuesday', 'wednesday', 'thursday'
 export const SCHEDULE_DATA: Schedule = {
   monday: [
     {
-      time: '09:00 - 10:30',
-      details: { name: 'Математический анализ', type: 'Лекция', location: 'Корпус 1, ауд. 101', instructor: 'Проф. Иванов И.И.' },
+      time: '08:00 - 9:25',
+      weeks: {
+        [WeekType.FIRST]: { name: 'Основы компьютерной геометрии', type: 'Лабораторная', location: 'Корпус 1, ауд. 102' },
+      },
     },
     {
-      time: '10:45 - 12:15',
-      weeks: {
-        [WeekType.FIRST]: { name: 'Дискретная математика', type: 'Семинар', location: 'Корпус 2, ауд. 305', instructor: 'Доц. Петров П.П.' },
-        [WeekType.SECOND]: { name: 'Философия', type: 'Лекция', location: 'Корпус 5, ауд. 555 (поток)', instructor: 'Проф. Михайлов М.М.' },
-      }
+      time: '9:35 - 11:00',
+      details: { name: 'Програм-е серверных кроссплатф. приложений', type: 'Лабораторная', location: 'Корпус 1, ауд. 308' }
     },
     {
-      time: '12:30 - 14:00',
-      weeks: {
-        [WeekType.FIRST]: { name: 'Физическая культура', type: 'Семинар', location: 'Спортзал', instructor: 'Ст. преп. Сидоров С.С.' },
-      }
+      time: '11:25 - 12:50',
+      details: { name: 'Базы данных', type: 'Лекция', location: 'Корпус 3а, ауд. 100 (поток)', instructor: 'ст. преп. Нистюк О.А' }
     },
   ],
   tuesday: [
     {
-      time: '10:45 - 12:15',
+      time: '08:00 - 9:25',
+      details: { name: 'Базы данных', type: 'Лабораторная', location: 'Корпус 1, ауд. 301' },
+    },
+    {
+      time: '9:35 - 11:00',
       weeks: {
-        [WeekType.FIRST]: { name: 'Основы программирования в жопе орла хаха 2', type: 'Лабораторная', location: 'Корпус 3, ауд. 210 (лаб)', instructor: 'Ас. Кузнецов К.К.' },
-        [WeekType.SECOND]: { name: 'Основы программирования 1', type: 'Лабораторная', location: 'Корпус 3, ауд. 210 (лаб)', instructor: 'Ас. Кузнецов К.К.' },
+        [WeekType.FIRST]: { name: 'Программирование серверных кроссплатформенных приложений', type: 'Лекция', location: 'Корпус 3a, ауд. 200 (поток)', instructor: 'доц. Смелов В.В.' },
+        [WeekType.SECOND]: { name: 'Технологии программирования в интернет', type: 'Лекция', location: 'Корпус 3a, ауд. 200 (поток)', instructor: 'доц. Смелов В.В.' },
       }
     },
     {
-      time: '12:30 - 14:00',
-      details: { name: 'Английский язык', type: 'Семинар', location: 'Корпус 2, ауд. 404', instructor: 'Преп. Смирнова О.В.' },
-    },
-    {
-      time: '14:15 - 15:45',
+      time: '11:25 - 12:50',
       weeks: {
-        [WeekType.SECOND]: { name: 'Дискретная математика', type: 'Лекция', location: 'Корпус 2, ауд. 301 (поток)', instructor: 'Доц. Петров П.П.' },
+        [WeekType.FIRST]: { name: 'Системное программирование', type: 'Лекция', location: 'Корпус 3a, ауд. 200 (поток)', instructor: 'доц. Смелов В.В.' },
+        [WeekType.SECOND]: { name: 'Основы компьютерной геометрии', type: 'Лекция', location: 'Корпус 3a, ауд. 200 (поток)', instructor: 'доц. Дятко А.А.' },
       }
     },
   ],
   wednesday: [
     {
-      time: '09:00 - 10:30',
-      details: { name: 'Математический анализ', type: 'Семинар', location: 'Корпус 1, ауд. 102', instructor: 'Проф. Иванов И.И.' },
+      time: '08:00 - 9:25',
+      details: { name: 'Деловые коммуникации', type: 'Лекция', location: 'Корпус 3a, ауд. 100', instructor: 'Криштаносов В.Б.' },
     },
     {
-      time: '10:45 - 12:15',
+      time: '9:35 - 11:00',
       weeks: {
-        [WeekType.FIRST]: { name: 'История России', type: 'Лекция', location: 'Корпус 5, ауд. 555 (поток)', instructor: 'Проф. Васильев В.В.' },
-        [WeekType.SECOND]: { name: 'История России', type: 'Семинар', location: 'Корпус 5, ауд. 501', instructor: 'Проф. Васильев В.В.' },
+        [WeekType.FIRST]: { name: 'Деловые коммуникации', type: 'Семинар', location: 'Корпус 4, ауд. 430' },
+        [WeekType.SECOND]: { name: 'Основы компьютерной геометрии', type: 'Лабораторная', location: 'Корпус 1, ауд. 102' },
       }
+    },
+    {
+      time: '11:25 - 12:50',
+      details: { name: 'Физическая культура', type: 'Семинар', location: '', instructor: '' },
     },
   ],
   thursday: [
     {
-      time: '12:30 - 14:00',
-      details: { name: 'Основы программирования', type: 'Лекция', location: 'Корпус 3, ауд. 301 (поток)', instructor: 'Доц. Зайцев З.З.' },
+      time: '08:00 - 9:25',
+      details: { name: 'Операционные системы', type: 'Лабораторная', location: 'Корпус 1, ауд. 204' },
     },
     {
-      time: '14:15 - 15:45',
+      time: '9:35 - 11:00',
       weeks: {
-        [WeekType.SECOND]: { name: 'Философия', type: 'Семинар', location: 'Корпус 5, ауд. 502', instructor: 'Проф. Михайлов М.М.' },
+        [WeekType.FIRST]: { name: 'Технологии программирования в интернет', type: 'Лабораторная', location: 'Корпус 1, ауд. 309' },
       }
-    },
+    }
   ],
   friday: [
     {
-        time: '09:00 - 10:30',
-        weeks: {
-            [WeekType.SECOND]: { name: 'Физическая культура', type: 'Семинар', location: 'Спортзал', instructor: 'Ст. преп. Сидоров С.С.' },
-        }
+      time: '08:00 - 9:25',
+      weeks: {
+        [WeekType.SECOND]: { name: 'Компьютерные мультимедийные системы', type: 'Лекция', location: 'Корпус 3a, ауд. 100', instructor: 'доц. Гурин Н.И' },
+      },
+    },
+    {
+      time: '9:35 - 11:00',
+      details: { name: 'Программирование сетевых приложений', type: 'Лабораторная', location: 'Корпус 1, ауд. 308' },
+    },
+    {
+      time: '11:25 - 12:50',
+      details: { name: 'Программирование сетевых приложений', type: 'Лекция', location: 'Корпус 3a, ауд. 200', instructor: 'доц. Шиман Д.В' },
+    },
+    {
+      time: '13:00 - 14:25',
+      details: { name: 'Компьютерные мультимедийные системы', type: 'Лекция', location: 'Корпус 1, ауд. 301' },
     }
   ],
   saturday: [
     {
-        time: '10:00 - 11:30',
-        weeks: {
-            [WeekType.FIRST]: { name: 'Военная подготовка', type: 'Семинар', location: 'Военная кафедра', instructor: 'Полковник Носов Н.Н.' },
-        }
+      time: '9:35 - 11:00',
+      details: { name: 'Операционные системы', type: 'Лекция', location: 'Корпус 3a, ауд. 200', instructor: 'асс. Бернацкий П.В.' },
+    },
+    {
+      time: '11:25 - 12:50',
+      details: { name: 'Системное программирование', type: 'Лекция', location: 'Корпус 1, ауд. 322' },
+    },
+    {
+      time: '13:00 - 14:25',
+      details: { name: 'Программирование серверных кроссплатформенных приложений', type: 'Лекция', location: 'Корпус 3a, ауд. 200' },
     }
   ],
 };
