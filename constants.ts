@@ -39,7 +39,7 @@ export const SCHEDULE_DATA: Schedule = {
     },
     {
       time: '11:25 - 12:50',
-      details: { name: 'Базы данных', type: 'Лекция', location: 'Корпус 3а, ауд. 100 (поток)', instructor: 'ст. преп. Нистюк О.А' }
+      details: { name: 'Базы данных', type: 'Лекция', location: 'Корпус 3а, ауд. 100 (поток)', instructor: 'ст. преп. Нистюк О.А.' }
     },
   ],
   tuesday: [
@@ -58,14 +58,14 @@ export const SCHEDULE_DATA: Schedule = {
       time: '11:25 - 12:50',
       weeks: {
         [WeekType.FIRST]: { name: 'Системное программирование', type: 'Лекция', location: 'Корпус 3a, ауд. 200 (поток)', instructor: 'доц. Смелов В.В.' },
-        [WeekType.SECOND]: { name: 'Основы компьютерной геометрии', type: 'Лекция', location: 'Корпус 3a, ауд. 200 (поток)', instructor: 'доц. Дятко А.А.' },
+        [WeekType.SECOND]: { name: 'Основы компьютерной геометрии', type: 'Лекция', location: 'Корпус 3a, ауд. 100 (поток)', instructor: 'доц. Дятко А.А.' },
       }
     },
   ],
   wednesday: [
     {
       time: '08:00 - 9:25',
-      details: { name: 'Деловые коммуникации', type: 'Лекция', location: 'Корпус 3a, ауд. 100', instructor: 'Криштаносов В.Б.' },
+      details: { name: 'Деловые коммуникации', type: 'Лекция', location: 'Корпус 3a, ауд. 100 (поток)', instructor: 'Криштаносов В.Б.' },
     },
     {
       time: '9:35 - 11:00',
@@ -95,7 +95,7 @@ export const SCHEDULE_DATA: Schedule = {
     {
       time: '08:00 - 9:25',
       weeks: {
-        [WeekType.SECOND]: { name: 'Компьютерные мультимедийные системы', type: 'Лекция', location: 'Корпус 3a, ауд. 100', instructor: 'доц. Гурин Н.И' },
+        [WeekType.FIRST]: { name: 'Компьютерные мультимедийные системы', type: 'Лекция', location: 'Корпус 3a, ауд. 100 (поток)', instructor: 'доц. Гурин Н.И.' },
       },
     },
     {
@@ -104,25 +104,25 @@ export const SCHEDULE_DATA: Schedule = {
     },
     {
       time: '11:25 - 12:50',
-      details: { name: 'Программирование сетевых приложений', type: 'Лекция', location: 'Корпус 3a, ауд. 200', instructor: 'доц. Шиман Д.В' },
+      details: { name: 'Программирование сетевых приложений', type: 'Лекция', location: 'Корпус 3a, ауд. 200 (поток)', instructor: 'доц. Шиман Д.В.' },
     },
     {
       time: '13:00 - 14:25',
-      details: { name: 'Компьютерные мультимедийные системы', type: 'Лекция', location: 'Корпус 1, ауд. 301' },
+      details: { name: 'Компьютерные мультимедийные системы', type: 'Лабораторная', location: 'Корпус 1, ауд. 301' },
     }
   ],
   saturday: [
     {
       time: '9:35 - 11:00',
-      details: { name: 'Операционные системы', type: 'Лекция', location: 'Корпус 3a, ауд. 200', instructor: 'асс. Бернацкий П.В.' },
+      details: { name: 'Операционные системы', type: 'Лекция', location: 'Корпус 3a, ауд. 200 (поток)', instructor: 'асс. Бернацкий П.В.' },
     },
     {
       time: '11:25 - 12:50',
-      details: { name: 'Системное программирование', type: 'Лекция', location: 'Корпус 1, ауд. 322' },
+      details: { name: 'Системное программирование', type: 'Лабораторная', location: 'Корпус 1, ауд. 322' },
     },
     {
       time: '13:00 - 14:25',
-      details: { name: 'Программирование серверных кроссплатформенных приложений', type: 'Лекция', location: 'Корпус 3a, ауд. 200' },
+      details: { name: 'Программирование серверных кроссплатформенных приложений', type: 'Лекция', location: 'Корпус 3a, ауд. 200 (поток)', instructor: 'доц. Смелов В.В.' },
     }
   ],
 };
