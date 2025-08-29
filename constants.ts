@@ -12,6 +12,16 @@ export const DAY_MAP: { [key in DayKey]: Day } = {
   sunday: 'Воскресенье' as Day.SUNDAY,
 };
 
+export const SHORT_DAY_MAP: Record<DayKey, string> = {
+  monday: 'Пн',
+  tuesday: 'Вт',
+  wednesday: 'Ср',
+  thursday: 'Чт',
+  friday: 'Пт',
+  saturday: 'Сб',
+  sunday: 'Вс',
+};
+
 export const DAY_ORDER: DayKey[] = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
 
 
