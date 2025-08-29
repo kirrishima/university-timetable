@@ -1,0 +1,5 @@
+{
+  "name": "University Timetable",
+  "description": "A modern web application to display university class schedules, with alternating first and second study weeks. The schedule shows the current day by default and allows viewing the full weekly schedule.",
+  "requestFramePermissions": []
+}
