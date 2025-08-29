@@ -1,3 +1,4 @@
+
 import React from 'react';
 import type { ClassDetailsData } from '../types';
 
@@ -30,7 +31,7 @@ const InstructorIcon: React.FC = () => (
 const ClassDetails: React.FC<ClassDetailsProps> = ({ details }) => {
     return (
         <div className="space-y-2">
-            <div className="flex flex-col items-start gap-y-1.5 sm:flex-row sm:items-center sm:gap-x-2">
+            <div className="flex flex-col sm:flex-row sm:items-center items-start gap-2">
               <h3 className="text-xl font-semibold text-slate-900">{details.name}</h3>
               <span className={`px-2.5 py-0.5 text-xs font-medium rounded-full ${getTypeColor(details.type)}`}>
                 {details.type}

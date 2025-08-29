@@ -14,17 +14,35 @@
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
       }
-    </style>
-    <script type="importmap">
-      {
-        "imports": {
-          "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/",
-          "react/": "https://aistudiocdn.com/react@^19.1.1/",
-          "react": "https://aistudiocdn.com/react@^19.1.1"
+      .custom-card {
+        background-color: #fff;
+        border-radius: 0.75rem; /* rounded-xl */
+        overflow: hidden;
+        display: flex;
+        /* Promote to its own layer to prevent jiggle */
+        transform: translateZ(0);
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+      }
+      @media (min-width: 1024px) {
+        .custom-card:hover {
+          /* shadow-lg */
+          box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+          /* -translate-y-1 */
+          transform: translateY(-0.25rem) translateZ(0);
         }
       }
-    </script>
-  </head>
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/",
+    "react/": "https://aistudiocdn.com/react@^19.1.1/",
+    "react": "https://aistudiocdn.com/react@^19.1.1"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
   <body>
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
