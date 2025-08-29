@@ -24,7 +24,7 @@ export const SHORT_DAY_MAP: Record<DayKey, string> = {
 
 export const DAY_ORDER: DayKey[] = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
 
-
+ 
 export const SCHEDULE_DATA: Schedule = {
   monday: [
     {
