@@ -25,6 +25,11 @@
         transform: translateZ(0);
         transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
       }
+      @media (max-width: 767px) {
+        .custom-selectday-grid {
+          grid-template-columns: repeat(6, 1fr) 1.1fr;
+        }
+      }
       @media (min-width: 1024px) {
         .custom-card:hover {
           /* shadow-lg */
@@ -35,7 +40,6 @@
       }
     </style>
 
-    <link rel="stylesheet" href="/index.css" />
     <script type="importmap">
       {
         "imports": {
@@ -45,7 +49,8 @@
         }
       }
     </script>
-    <script type="module" crossorigin src="/university-timetable/assets/index-Ui_hG4-V.js"></script>
+    <script type="module" crossorigin src="/university-timetable/assets/index-D5oBKTXk.js"></script>
+    <link rel="stylesheet" crossorigin href="/university-timetable/assets/index-C6G_3qQV.css">
   </head>
   <body>
     <div id="root"></div>
