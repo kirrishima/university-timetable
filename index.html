@@ -25,6 +25,11 @@
         transform: translateZ(0);
         transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
       }
+      @media (max-width: 767px) {
+        .custom-selectday-grid {
+          grid-template-columns: repeat(6, 1fr) 1.1fr;
+        }
+      }
       @media (min-width: 1024px) {
         .custom-card:hover {
           /* shadow-lg */
