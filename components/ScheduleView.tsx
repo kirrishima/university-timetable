@@ -2,7 +2,7 @@ import React from "react";
 import type { ScheduleSlot, DayKey, Schedule, WeekType, DateLike } from "../types";
 import ClassCard from "./ClassCard";
 import PairedClassCard from "./PairedClassCard";
-import { DAY_MAP, DAY_ORDER } from "../constants";
+import { DAY_MAP, DAY_ORDER, ENABLE_STUDY_WEEKS } from "../constants";
 
 interface ScheduleViewProps {
   schedule: Schedule;
