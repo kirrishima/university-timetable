@@ -1,3 +1,4 @@
+
 export interface Theme {
   name: string;
   colors: {
@@ -30,7 +31,8 @@ export interface Theme {
   };
 }
 
-export const themes: Record<string, Theme> = {
+// FIX: Define base themes in a separate object to avoid self-reference during initialization.
+const baseThemes: Record<string, Theme> = {
   indigo: {
     name: "Indigo",
     colors: {
@@ -48,7 +50,7 @@ export const themes: Record<string, Theme> = {
       primaryMutedBg: "bg-indigo-100",
       primaryBorder: "border-indigo-200",
       primaryLightestBg: "bg-indigo-50",
-      ring: "lg:focus:ring-indigo-500",
+      ring: "focus:ring-indigo-500",
       button: {
         hoverBg: "hover:bg-slate-200",
         disabledBg: "bg-slate-300",
@@ -79,7 +81,7 @@ export const themes: Record<string, Theme> = {
       primaryMutedBg: "bg-rose-100",
       primaryBorder: "border-rose-200",
       primaryLightestBg: "bg-rose-50",
-      ring: "lg:focus:ring-rose-500",
+      ring: "focus:ring-rose-500",
       button: {
         hoverBg: "hover:bg-stone-200",
         disabledBg: "bg-stone-300",
@@ -110,7 +112,7 @@ export const themes: Record<string, Theme> = {
       primaryMutedBg: "bg-teal-100",
       primaryBorder: "border-teal-200",
       primaryLightestBg: "bg-teal-50",
-      ring: "lg:focus:ring-teal-500",
+      ring: "focus:ring-teal-500",
       button: {
         hoverBg: "hover:bg-slate-200",
         disabledBg: "bg-slate-300",
@@ -141,7 +143,7 @@ export const themes: Record<string, Theme> = {
       primaryMutedBg: "bg-amber-100",
       primaryBorder: "border-amber-300",
       primaryLightestBg: "bg-amber-50",
-      ring: "lg:focus:ring-amber-500",
+      ring: "focus:ring-amber-500",
       button: {
         hoverBg: "hover:bg-stone-200",
         disabledBg: "bg-stone-300",
@@ -155,8 +157,39 @@ export const themes: Record<string, Theme> = {
       divider: "border-stone-200",
     },
   },
-  dark: {
-    name: "Dark",
+  slate: {
+    name: "Slate",
+    colors: {
+      mainBg: "bg-slate-900",
+      mainText: "text-slate-300",
+      cardBg: "bg-slate-800",
+      cardHeader: "text-slate-100",
+      secondaryText: "text-slate-400",
+      mutedText: "text-slate-500",
+      primary: "bg-slate-500",
+      primaryText: "text-white",
+      primaryAccent: "bg-slate-600",
+      primaryAccentLight: "bg-slate-400",
+      primaryMuted: "text-slate-400",
+      primaryMutedBg: "bg-slate-700/50",
+      primaryBorder: "border-slate-600",
+      primaryLightestBg: "bg-slate-700/30",
+      ring: "focus:ring-slate-500",
+      button: {
+        hoverBg: "hover:bg-slate-700",
+        disabledBg: "bg-slate-600",
+        disabledText: "text-slate-400",
+      },
+      classType: {
+        lecture: "bg-indigo-900 text-indigo-300",
+        seminar: "bg-emerald-900 text-emerald-300",
+        lab: "bg-amber-900 text-amber-300",
+      },
+      divider: "border-slate-700",
+    },
+  },
+  'dark-sky': {
+    name: "Dark Sky",
     colors: {
       mainBg: "bg-slate-900",
       mainText: "text-slate-300",
@@ -172,7 +205,7 @@ export const themes: Record<string, Theme> = {
       primaryMutedBg: "bg-sky-900/50",
       primaryBorder: "border-sky-700",
       primaryLightestBg: "bg-sky-900/30",
-      ring: "lg:focus:ring-sky-500",
+      ring: "focus:ring-sky-500",
       button: {
         hoverBg: "hover:bg-slate-700",
         disabledBg: "bg-slate-600",
@@ -184,6 +217,115 @@ export const themes: Record<string, Theme> = {
         lab: "bg-amber-900 text-amber-300",
       },
       divider: "border-slate-700",
+    },
+  },
+};
+
+export const themes: Record<string, Theme> = {
+  ...baseThemes,
+  red: {
+    name: "Red",
+    colors: {
+      // FIX: Reference `baseThemes` instead of `themes` to avoid using a variable during its declaration.
+      ...baseThemes.indigo.colors,
+      primary: "bg-red-600",
+      primaryAccent: "bg-red-500",
+      primaryAccentLight: "bg-red-400",
+      primaryMuted: "text-red-700",
+      primaryMutedBg: "bg-red-100",
+      primaryBorder: "border-red-200",
+      primaryLightestBg: "bg-red-50",
+      ring: "focus:ring-red-500",
+    },
+  },
+  green: {
+    name: "Green",
+    colors: {
+      // FIX: Reference `baseThemes` instead of `themes` to avoid using a variable during its declaration.
+      ...baseThemes.indigo.colors,
+      primary: "bg-green-600",
+      primaryAccent: "bg-green-500",
+      primaryAccentLight: "bg-green-400",
+      primaryMuted: "text-green-700",
+      primaryMutedBg: "bg-green-100",
+      primaryBorder: "border-green-200",
+      primaryLightestBg: "bg-green-50",
+      ring: "focus:ring-green-500",
+    },
+  },
+  sky: {
+    name: "Sky",
+    colors: {
+      // FIX: Reference `baseThemes` instead of `themes` to avoid using a variable during its declaration.
+      ...baseThemes.indigo.colors,
+      primary: "bg-sky-600",
+      primaryAccent: "bg-sky-500",
+      primaryAccentLight: "bg-sky-400",
+      primaryMuted: "text-sky-700",
+      primaryMutedBg: "bg-sky-100",
+      primaryBorder: "border-sky-200",
+      primaryLightestBg: "bg-sky-50",
+      ring: "focus:ring-sky-500",
+    },
+  },
+  violet: {
+    name: "Violet",
+    colors: {
+      // FIX: Reference `baseThemes` instead of `themes` to avoid using a variable during its declaration.
+      ...baseThemes.indigo.colors,
+      primary: "bg-violet-600",
+      primaryAccent: "bg-violet-500",
+      primaryAccentLight: "bg-violet-400",
+      primaryMuted: "text-violet-700",
+      primaryMutedBg: "bg-violet-100",
+      primaryBorder: "border-violet-200",
+      primaryLightestBg: "bg-violet-50",
+      ring: "focus:ring-violet-500",
+    },
+  },
+  'dark-red': {
+    name: "Dark Red",
+    colors: {
+      // FIX: Reference `baseThemes` instead of `themes` to avoid using a variable during its declaration.
+      ...baseThemes['dark-sky'].colors,
+      primary: "bg-red-500",
+      primaryAccent: "bg-red-600",
+      primaryAccentLight: "bg-red-400",
+      primaryMuted: "text-red-400",
+      primaryMutedBg: "bg-red-900/50",
+      primaryBorder: "border-red-700",
+      primaryLightestBg: "bg-red-900/30",
+      ring: "focus:ring-red-500",
+    },
+  },
+  'dark-green': {
+    name: "Dark Green",
+    colors: {
+      // FIX: Reference `baseThemes` instead of `themes` to avoid using a variable during its declaration.
+      ...baseThemes['dark-sky'].colors,
+      primary: "bg-green-500",
+      primaryAccent: "bg-green-600",
+      primaryAccentLight: "bg-green-400",
+      primaryMuted: "text-green-400",
+      primaryMutedBg: "bg-green-900/50",
+      primaryBorder: "border-green-700",
+      primaryLightestBg: "bg-green-900/30",
+      ring: "focus:ring-green-500",
+    },
+  },
+  'dark-violet': {
+    name: "Dark Violet",
+    colors: {
+      // FIX: Reference `baseThemes` instead of `themes` to avoid using a variable during its declaration.
+      ...baseThemes['dark-sky'].colors,
+      primary: "bg-violet-500",
+      primaryAccent: "bg-violet-600",
+      primaryAccentLight: "bg-violet-400",
+      primaryMuted: "text-violet-400",
+      primaryMutedBg: "bg-violet-900/50",
+      primaryBorder: "border-violet-700",
+      primaryLightestBg: "bg-violet-900/30",
+      ring: "focus:ring-violet-500",
     },
   },
 };
