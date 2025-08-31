@@ -12,24 +12,29 @@ jobs:
       contents: write
       pages: write
       id-token: write
+    defaults:
+      run:
+        working-directory: ./src
 
     steps:
-      - uses: actions/checkout@v4
+      - name: checkout
+        uses: actions/checkout@v4
 
-      - name: Use Node.js
+      - name: use node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'npm'
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: ./src/package-lock.json
 
-      - name: Install deps
+      - name: install deps
         run: npm ci
 
-      - name: Build
+      - name: build
         run: npm run build
 
-      - name: Deploy to GitHub Pages
+      - name: deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+          publish_dir: ./src/dist
