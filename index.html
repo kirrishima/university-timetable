@@ -1,27 +1,22 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="https://cdn-icons-png.flaticon.com/512/32/32223.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>University Timetable</title>
-    <link rel="manifest" href="/university-timetable/assets/manifest-aGSo8UQf.json" />
-    <meta name="theme-color" content="#4f46e5" />
+    <title>Расписание Университета</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-      html {
-        overflow-y: scroll;
-      }
       body {
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
+        overflow-y: scroll;
       }
       .custom-card {
-        background-color: #fff;
         border-radius: 0.75rem; /* rounded-xl */
         overflow: hidden;
         display: flex;
-        /* Promote to its own layer to prevent jiggle */
         transform: translateZ(0);
         transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
       }
@@ -32,41 +27,30 @@
       }
       @media (min-width: 1024px) {
         .custom-card:hover {
-          /* shadow-lg */
-          box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-          /* -translate-y-1 */
+          box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1); /* shadow-lg */
           transform: translateY(-0.25rem) translateZ(0);
         }
       }
     </style>
 
-    <script type="importmap">
-      {
-        "imports": {
-          "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/",
-          "react/": "https://aistudiocdn.com/react@^19.1.1/",
-          "react": "https://aistudiocdn.com/react@^19.1.1"
-        }
-      }
-    </script>
-    <script type="module" crossorigin src="/university-timetable/assets/index-D5oBKTXk.js"></script>
-    <link rel="stylesheet" crossorigin href="/university-timetable/assets/index-C6G_3qQV.css">
-  </head>
+
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.1.1/",
+    "react": "https://aistudiocdn.com/react@^19.1.1",
+    "vite": "https://aistudiocdn.com/vite@^7.1.3",
+    "path": "https://aistudiocdn.com/path@^0.12.7",
+    "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.0.2",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/"
+  }
+}
+</script>
+  <script type="module" crossorigin src="/assets/index-c9a2a798.js"></script>
+  <link rel="stylesheet" href="/assets/index-179954eb.css">
+</head>
   <body>
     <div id="root"></div>
-    <script>
-      if ("serviceWorker" in navigator) {
-        window.addEventListener("load", () => {
-          navigator.serviceWorker.register("./sw.js").then(
-            (registration) => {
-              console.log("ServiceWorker registration successful with scope: ", registration.scope);
-            },
-            (err) => {
-              console.log("ServiceWorker registration failed: ", err);
-            }
-          );
-        });
-      }
-    </script>
+    
   </body>
 </html>
