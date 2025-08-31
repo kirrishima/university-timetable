@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 
 export default function useIsMobile(breakpoint = 768) {
@@ -14,22 +15,13 @@ export default function useIsMobile(breakpoint = 768) {
       setIsMobile("matches" in e ? e.matches : mq.matches);
     };
 
-    if ("addEventListener" in mq) {
-      mq.addEventListener("change", handler as EventListener);
-    } else {
-      // @ts-ignore
-      mq.addListener(handler);
-    }
-
-    setIsMobile(mq.matches);
+    mq.addEventListener("change", handler as EventListener);
+    
+    // Initial check
+    handler(mq);
 
     return () => {
-      if ("removeEventListener" in mq) {
-        mq.removeEventListener("change", handler as EventListener);
-      } else {
-        // @ts-ignore
-        mq.removeListener(handler);
-      }
+      mq.removeEventListener("change", handler as EventListener);
     };
   }, [breakpoint, isClient]);
 

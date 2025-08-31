@@ -26,7 +26,6 @@ export const ENABLE_STUDY_WEEKS: boolean = true;
 
 export const DAY_ORDER: DayKey[] = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
 
-
 export const SCHEDULE_DATA: Schedule = {
   monday: [
     {

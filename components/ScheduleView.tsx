@@ -1,8 +1,10 @@
+
 import React from "react";
-import type { ScheduleSlot, DayKey, Schedule, WeekType, DateLike } from "../types";
+import type { DayKey, Schedule, WeekType, DateLike } from "../types";
 import ClassCard from "./ClassCard";
 import PairedClassCard from "./PairedClassCard";
-import { DAY_MAP, DAY_ORDER, ENABLE_STUDY_WEEKS } from "../constants";
+import { DAY_MAP, DAY_ORDER } from "../constants";
+import { useTheme } from "../contexts/ThemeContext";
 
 interface ScheduleViewProps {
   schedule: Schedule;
@@ -12,26 +14,30 @@ interface ScheduleViewProps {
   displayWeek: WeekType;
 }
 
-const EmptyState: React.FC = () => (
-  <div className="mt-6 text-center bg-white p-8 rounded-xl shadow-sm">
-    <svg
-      xmlns="http://www.w.org/2000/svg"
-      className="mx-auto h-12 w-12 text-slate-400"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-      strokeWidth={2}
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-      />
-    </svg>
-    <h3 className="mt-2 text-lg font-medium text-slate-900">Свободный день</h3>
-    <p className="mt-1 text-sm text-slate-500">Нет запланированных занятий.</p>
-  </div>
-);
+const EmptyState: React.FC = () => {
+    const { theme } = useTheme();
+    return (
+        <div className={`mt-6 text-center ${theme.colors.cardBg} p-8 rounded-xl shadow-sm`}>
+            <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className={`mx-auto h-12 w-12 ${theme.colors.mutedText}`}
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth={1.5}
+            >
+            <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+            />
+            </svg>
+            <h3 className={`mt-2 text-lg font-medium ${theme.colors.cardHeader}`}>Свободный день</h3>
+            <p className={`mt-1 text-sm ${theme.colors.mutedText}`}>Нет запланированных занятий.</p>
+        </div>
+    );
+};
+
 
 function parseDate(d: DateLike): Date | null {
   if (d == null) return null;
@@ -50,6 +56,7 @@ const ScheduleView: React.FC<ScheduleViewProps> = ({
   currentAcademicWeek,
   displayWeek,
 }) => {
+  const { theme } = useTheme();
   const dayKeysToDisplay = selectedDay === "all" ? DAY_ORDER : [selectedDay];
 
   const hasContentOnDay = (dayKey: DayKey): boolean => {
@@ -82,13 +89,13 @@ const ScheduleView: React.FC<ScheduleViewProps> = ({
                   .map((slot) => ({ ...slot, details: slot.details || slot.weeks?.[displayWeek] }))
                   .filter((slot) => slot.details)
                   .filter((slot) => {
-                    const from = parseDate(slot.details.visibleFrom);
-                    const until = parseDate(slot.details.visibleUntil);
+                    const from = parseDate(slot.details!.visibleFrom);
+                    const until = parseDate(slot.details!.visibleUntil);
 
                     const now = new Date();
 
-                    const afterFrom = from ? (true ? now >= from : now > from) : true;
-                    const beforeUntil = until ? (false ? now <= until : now < until) : true;
+                    const afterFrom = from ? now >= from : true;
+                    const beforeUntil = until ? now < until : true;
 
                     return afterFrom && beforeUntil;
                   })
@@ -97,17 +104,15 @@ const ScheduleView: React.FC<ScheduleViewProps> = ({
                   ))
               : daySlots.map((slot, index) => {
                   if (slot.details && !slot.weeks) {
-                    // Only a common class
                     return <ClassCard key={`${slot.time}-${index}`} details={slot.details} time={slot.time} />;
                   }
                   if (slot.weeks) {
-                    // Alternating or single-week classes
                     return (
                       <PairedClassCard
                         key={`${slot.time}-${index}`}
                         time={slot.time}
                         sessions={slot.weeks}
-                        commonDetails={slot.details} // Pass common details if they exist
+                        commonDetails={slot.details}
                         currentAcademicWeek={currentAcademicWeek}
                       />
                     );
@@ -117,7 +122,6 @@ const ScheduleView: React.FC<ScheduleViewProps> = ({
           </div>
         );
 
-        // If single day view has no content for that day, show empty state
         if (selectedDay !== "all" && !hasContentOnDay(dayKey)) {
           return <EmptyState key={dayKey} />;
         }
@@ -125,7 +129,7 @@ const ScheduleView: React.FC<ScheduleViewProps> = ({
         return (
           <div key={dayKey}>
             {selectedDay === "all" && (
-              <h2 className="text-xl font-bold text-slate-700 mb-4 pb-2 border-b-2 border-indigo-200">
+              <h2 className={`text-xl font-bold ${theme.colors.secondaryText} mb-4 pb-2 border-b-2 ${theme.colors.primaryBorder}`}>
                 {DAY_MAP[dayKey]}
               </h2>
             )}

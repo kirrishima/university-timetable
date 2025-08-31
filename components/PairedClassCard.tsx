@@ -1,6 +1,8 @@
+
 import React from 'react';
 import type { ClassDetailsData, AlternatingClasses, WeekType } from '../types';
 import ClassDetails from './ClassDetails';
+import { useTheme } from '../contexts/ThemeContext';
 
 interface PairedClassCardProps {
   time: string;
@@ -13,16 +15,19 @@ const WeekRow: React.FC<{
   weekLabel: string;
   details: ClassDetailsData;
   isCurrent: boolean;
-}> = ({ weekLabel, details, isCurrent }) => (
-  <div className={`p-4 transition-colors duration-300 ${isCurrent ? 'bg-indigo-50 rounded-lg' : ''}`}>
-    <p className={`text-xs font-bold uppercase tracking-wider ${isCurrent ? 'text-indigo-700' : 'text-slate-500'}`}>
-      {weekLabel}
-    </p>
-    <div className="mt-2">
-      <ClassDetails details={details} />
-    </div>
-  </div>
-);
+}> = ({ weekLabel, details, isCurrent }) => {
+    const { theme } = useTheme();
+    return (
+        <div className={`p-4 transition-colors duration-300 ${isCurrent ? `${theme.colors.primaryLightestBg} rounded-lg` : ''}`}>
+            <p className={`text-xs font-bold uppercase tracking-wider ${isCurrent ? theme.colors.primaryMuted : theme.colors.mutedText}`}>
+              {weekLabel}
+            </p>
+            <div className="mt-2">
+              <ClassDetails details={details} />
+            </div>
+        </div>
+    )
+};
 
 const PairedClassCard: React.FC<PairedClassCardProps> = ({
   time,
@@ -30,27 +35,26 @@ const PairedClassCard: React.FC<PairedClassCardProps> = ({
   commonDetails,
   currentAcademicWeek,
 }) => {
+  const { theme } = useTheme();
   const sessionFirst = sessions.first;
   const sessionSecond = sessions.second;
   const hasBothAlternating = sessionFirst && sessionSecond;
 
   return (
-    <div className="custom-card shadow-sm">
-      <div className="w-2 bg-indigo-500"></div>
+    <div className={`custom-card shadow-sm ${theme.colors.cardBg}`}>
+      <div className={`w-2 ${theme.colors.primaryAccent}`}></div>
       <div className="p-5 flex flex-col md:flex-row items-start md:items-center gap-4 w-full">
         <div className="w-full md:w-1/4">
-          <p className="text-lg font-bold text-indigo-700">{time}</p>
+          <p className={`text-lg font-bold ${theme.colors.primaryMuted}`}>{time}</p>
         </div>
         <div className="w-full md:w-3/4 space-y-2">
-          {/* Render common details if they exist */}
           {commonDetails && (
               <div className="p-4">
                   <ClassDetails details={commonDetails}/>
               </div>
           )}
-          {/* Divider if there are both common AND alternating classes */}
           {commonDetails && (sessionFirst || sessionSecond) && (
-              <div className="border-t border-slate-200 mx-4"></div>
+              <div className={`border-t ${theme.colors.divider} mx-4`}></div>
           )}
           
           {sessionFirst && (
@@ -61,7 +65,7 @@ const PairedClassCard: React.FC<PairedClassCardProps> = ({
             />
           )}
           {hasBothAlternating && (
-            <div className="border-t border-slate-200 mx-4"></div>
+            <div className={`border-t ${theme.colors.divider} mx-4`}></div>
           )}
           {sessionSecond && (
             <WeekRow

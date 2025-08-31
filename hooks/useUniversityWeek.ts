@@ -38,7 +38,6 @@ export const useUniversityWeek = (): UniversityWeekInfo => {
     });
     const formattedDate = formatter.format(now);
 
-    // JavaScript's getDay(): Sunday - 0, Monday - 1, ..., Saturday - 6
     const dayIndex = now.getDay();
     const dayKeys: DayKey[] = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
     const currentDayKey = dayKeys[dayIndex];

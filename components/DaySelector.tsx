@@ -1,7 +1,9 @@
+
 import React from "react";
 import type { DayKey } from "../types";
 import { DAY_MAP, SHORT_DAY_MAP, DAY_ORDER } from "../constants";
 import useIsMobile from "../hooks/useIsMobile";
+import { useTheme } from "../contexts/ThemeContext";
 
 interface DaySelectorProps {
   selectedDay: DayKey | "all";
@@ -9,24 +11,19 @@ interface DaySelectorProps {
 }
 
 const DaySelector: React.FC<DaySelectorProps> = ({ selectedDay, setSelectedDay }) => {
+  const { theme } = useTheme();
   const days: (DayKey | "all")[] = [...DAY_ORDER, "all"];
   const isMobile = useIsMobile();
 
   const getButtonText = (day: DayKey | "all") => {
     if (day === "all") return isMobile ? "Все" : "Вся неделя";
-    const dayName = DAY_MAP[day];
-    // Use a more robust check for mobile viewports
-    if (isMobile) {
-      return SHORT_DAY_MAP[day];
-    }
-    return dayName;
+    return isMobile ? SHORT_DAY_MAP[day] : DAY_MAP[day];
   };
 
   return (
-    <div className="bg-white p-2 rounded-xl shadow-sm grid custom-selectday-grid md:grid-cols-7 gap-1 md:gap-2">
+    <div className={`${theme.colors.cardBg} p-2 rounded-xl shadow-sm grid custom-selectday-grid md:grid-cols-7 gap-1 md:gap-2`}>
       {days.map((day) => {
         const isActive = selectedDay === day;
-        // The "all" button spans multiple columns on mobile
         const colSpan = day === "all" ? "col-span-1" : "col-span-1";
 
         return (
@@ -36,11 +33,10 @@ const DaySelector: React.FC<DaySelectorProps> = ({ selectedDay, setSelectedDay }
             className={`
               ${colSpan} md:col-span-1
               px-0 py-2.5 w-full text-sm md:text-base font-semibold rounded-lg transition-colors duration-200
-              focus:outline-none lg:focus:ring-2 lg:focus:ring-offset-2 lg:focus:ring-indigo-500
-              ${isActive ? "bg-indigo-600 text-white shadow" : "text-slate-600 lg:hover:bg-slate-200"}
-              ${day === "all" ? "p-2" : ""}
+              focus:outline-none lg:focus:ring-2 lg:focus:ring-offset-2 ${theme.colors.ring}
+              ${isActive ? `${theme.colors.primary} ${theme.colors.primaryText} shadow` : `${theme.colors.secondaryText} lg:${theme.colors.button.hoverBg}`}
             `}
-            title={day === "all" ? (isMobile ? "Все" : "Вся неделя") : DAY_MAP[day as DayKey]}
+            title={day === "all" ? getButtonText("all") : DAY_MAP[day as DayKey]}
           >
             {getButtonText(day)}
           </button>
