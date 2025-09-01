@@ -1,5 +1,7 @@
 import React, { createContext, useState, useContext, useMemo, ReactNode, useEffect } from "react";
-import { themes, Theme } from "../themes";
+// FIX: Import Theme type from types.ts, not themes.ts
+import { themes } from "../themes";
+import type { Theme } from "../types";
 
 interface ThemeContextType {
   theme: Theme;

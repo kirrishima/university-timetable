@@ -18,13 +18,15 @@ export type DayKey = 'monday' | 'tuesday' | 'wednesday' | 'thursday' | 'friday' 
 
 export type ClassType = 'Лекция' | 'Семинар' | 'Лабораторная';
 
+export type DateLike = Date | string | number | null | undefined;
+
 export interface ClassDetailsData {
   name: string;
   type: ClassType;
   location?: string;
   instructor?: string;
-  visibleFrom?: Date;
-  visibleUntil?: Date;
+  visibleFrom?: DateLike;
+  visibleUntil?: DateLike;
 }
 
 export interface AlternatingClasses {
@@ -46,6 +48,7 @@ export type Schedule = {
 
 export interface ScheduleIdentifier {
   faculty: string;
+  facultyShort: string,
   course: number;
   group: number;
   subgroup?: number;
@@ -53,4 +56,38 @@ export interface ScheduleIdentifier {
 
 export interface ScheduleEntry extends ScheduleIdentifier {
   schedule: Schedule;
+}
+
+export interface ThemeColors {
+  mainBg: string;
+  mainText: string;
+  cardBg: string;
+  cardHeader: string;
+  secondaryText: string;
+  mutedText: string;
+  primary: string;
+  primaryText: string;
+  primaryAccent: string;
+  primaryAccentLight: string;
+  primaryMuted: string;
+  primaryMutedBg: string;
+  primaryBorder: string;
+  primaryLightestBg: string;
+  ring: string;
+  button: {
+    hoverBg: string;
+    disabledBg: string;
+    disabledText: string;
+  };
+  classType: {
+    lecture: string;
+    seminar: string;
+    lab: string;
+  };
+  divider: string;
+}
+
+export interface Theme {
+  name: string;
+  colors: ThemeColors;
 }

@@ -106,14 +106,6 @@ const USER_SCHEDULE: Schedule = {
   ],
 };
 
-const DUMMY_SCHEDULE_1: Schedule = {
-  monday: [{ time: '11:25 - 12:50', details: { name: 'Теория алгоритмов', type: 'Лекция', location: 'Онлайн' }}],
-  wednesday: [{ time: '09:35 - 11:00', details: { name: 'Теория алгоритмов', type: 'Семинар', location: 'Корпус 2, ауд. 202' }}]
-};
-
-
 export const ALL_SCHEDULES: ScheduleEntry[] = [
-  // Course 3
-  { faculty: 'Информационных технологий', course: 3, group: 6, subgroup: 1, schedule: USER_SCHEDULE },
-  { faculty: 'Информационных технологий', course: 3, group: 6, subgroup: 2, schedule: DUMMY_SCHEDULE_1 },
+  { faculty: 'Факультет информационных технологий', facultyShort: "ФИТ", course: 3, group: 6, subgroup: 1, schedule: USER_SCHEDULE },
 ];

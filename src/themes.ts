@@ -194,9 +194,7 @@ export const themes: Record<string, Theme> = {
   ...baseThemes,
   red: {
     name: "Red",
-    colors: {
-      // FIX: Reference `baseThemes` instead of `themes` to avoid using a variable during its declaration.
-      ...baseThemes.indigo.colors,
+    colors: {      ...baseThemes.indigo.colors,
       primary: "bg-red-600",
       primaryAccent: "bg-red-500",
       primaryAccentLight: "bg-red-400",
@@ -209,9 +207,7 @@ export const themes: Record<string, Theme> = {
   },
   green: {
     name: "Green",
-    colors: {
-      // FIX: Reference `baseThemes` instead of `themes` to avoid using a variable during its declaration.
-      ...baseThemes.indigo.colors,
+    colors: {      ...baseThemes.indigo.colors,
       primary: "bg-green-600",
       primaryAccent: "bg-green-500",
       primaryAccentLight: "bg-green-400",
@@ -224,9 +220,7 @@ export const themes: Record<string, Theme> = {
   },
   sky: {
     name: "Sky",
-    colors: {
-      // FIX: Reference `baseThemes` instead of `themes` to avoid using a variable during its declaration.
-      ...baseThemes.indigo.colors,
+    colors: {      ...baseThemes.indigo.colors,
       primary: "bg-sky-600",
       primaryAccent: "bg-sky-500",
       primaryAccentLight: "bg-sky-400",
@@ -239,9 +233,7 @@ export const themes: Record<string, Theme> = {
   },
   violet: {
     name: "Violet",
-    colors: {
-      // FIX: Reference `baseThemes` instead of `themes` to avoid using a variable during its declaration.
-      ...baseThemes.indigo.colors,
+    colors: {      ...baseThemes.indigo.colors,
       primary: "bg-violet-600",
       primaryAccent: "bg-violet-500",
       primaryAccentLight: "bg-violet-400",
@@ -254,9 +246,7 @@ export const themes: Record<string, Theme> = {
   },
   'dark-red': {
     name: "Dark Red",
-    colors: {
-      // FIX: Reference `baseThemes` instead of `themes` to avoid using a variable during its declaration.
-      ...baseThemes['dark-sky'].colors,
+    colors: {      ...baseThemes['dark-sky'].colors,
       primary: "bg-red-500",
       primaryAccent: "bg-red-600",
       primaryAccentLight: "bg-red-400",
@@ -269,9 +259,7 @@ export const themes: Record<string, Theme> = {
   },
   'dark-green': {
     name: "Dark Green",
-    colors: {
-      // FIX: Reference `baseThemes` instead of `themes` to avoid using a variable during its declaration.
-      ...baseThemes['dark-sky'].colors,
+    colors: {      ...baseThemes['dark-sky'].colors,
       primary: "bg-green-500",
       primaryAccent: "bg-green-600",
       primaryAccentLight: "bg-green-400",
@@ -284,9 +272,7 @@ export const themes: Record<string, Theme> = {
   },
   'dark-violet': {
     name: "Dark Violet",
-    colors: {
-      // FIX: Reference `baseThemes` instead of `themes` to avoid using a variable during its declaration.
-      ...baseThemes['dark-sky'].colors,
+    colors: {      ...baseThemes['dark-sky'].colors,
       primary: "bg-violet-500",
       primaryAccent: "bg-violet-600",
       primaryAccentLight: "bg-violet-400",

@@ -44,10 +44,10 @@ const PairedClassCard: React.FC<PairedClassCardProps> = ({
     <div className={`custom-card shadow-sm ${theme.colors.cardBg}`}>
       <div className={`w-2 ${theme.colors.primaryAccent}`}></div>
       <div className="p-5 flex flex-col md:flex-row items-start md:items-center gap-4 w-full">
-        <div className="w-full md:w-1/4">
+        <div className="w-full md:w-1/6">
           <p className={`text-lg font-bold ${theme.colors.primaryMuted}`}>{time}</p>
         </div>
-        <div className="w-full md:w-3/4 space-y-2">
+        <div className="w-full md:w-5/6 space-y-2">
           {commonDetails && (
               <div className="p-4">
                   <ClassDetails details={commonDetails}/>
