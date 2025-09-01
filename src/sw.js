@@ -1,4 +1,5 @@
 const CACHE_NAME = 'university-timetable-v2';
+
 const urlsToCache = [
   '/',
   '/index.html',
@@ -7,16 +8,28 @@ const urlsToCache = [
   '/types.ts',
   '/constants.ts',
   '/hooks/useUniversityWeek.ts',
+  '/hooks/useSchedule.ts',
+  '/hooks/useIsMobile.ts',
+  '/contexts/ThemeContext.tsx',
+  '/data/schedules.ts',
+  '/themes.ts',
+  '/screens/SetupScreen.tsx',
+  '/screens/ScheduleScreen.tsx',
   '/components/Header.tsx',
   '/components/DaySelector.tsx',
   '/components/ScheduleView.tsx',
   '/components/ClassCard.tsx',
   '/components/Controls.tsx',
   '/components/PairedClassCard.tsx',
-  '/components/ClassDetails.tsx'
+  '/components/ClassDetails.tsx',
+  '/components/ThemeSwitcher.tsx',
+  '/components/icons/ScheduleIcons.tsx',
+  '/components/ui/Button.tsx',
+  '/components/ui/Select.tsx',
+  '/manifest.json',
+  'https://cdn-icons-png.flaticon.com/512/32/32223.png'
 ];
 
-// Установка Service Worker и кэширование статических ассетов
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
@@ -27,18 +40,19 @@ self.addEventListener('install', event => {
   );
 });
 
-// Перехват запросов и отдача из кэша, если возможно
 self.addEventListener('fetch', event => {
   event.respondWith(
-    caches.match(event.request)
-      .then(response => {
-        // Если ресурс есть в кэше, отдаем его
-        if (response) {
-          return response;
-        }
-        // Иначе, делаем запрос к сети
-        return fetch(event.request);
-      }
-    )
+    caches.open(CACHE_NAME).then(cache => {
+      return cache.match(event.request).then(cachedResponse => {
+        const fetchPromise = fetch(event.request).then(networkResponse => {
+          if (networkResponse.ok) {
+            cache.put(event.request, networkResponse.clone());
+          }
+          return networkResponse;
+        });
+
+        return cachedResponse || fetchPromise;
+      });
+    })
   );
 });
