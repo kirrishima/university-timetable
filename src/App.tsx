@@ -12,8 +12,8 @@ const AppContent: React.FC = () => {
   const { selectedSchedule, saveSchedule, clearSchedule } = useSchedule();
 
   const handleScheduleSelect = (schedule: ScheduleEntry) => {
-    const { faculty, course, group, subgroup } = schedule;
-    saveSchedule({ faculty, course, group, subgroup });
+    const { faculty, facultyShort, course, group, subgroup } = schedule;
+    saveSchedule({ faculty, facultyShort, course, group, subgroup });
   };
 
   const scheduleData = selectedSchedule 
