@@ -1,25 +1,26 @@
 
 import React from "react";
-import useIsMobile from "../hooks/useIsMobile";
 import { ENABLE_STUDY_WEEKS } from "../constants";
 import { useTheme } from "../contexts/ThemeContext";
+import { ChangeIcon } from "./icons/ScheduleIcons";
 
 interface HeaderProps {
   formattedDate: string;
   weekTypeString: string;
+  scheduleTitle: string;
+  onReset: () => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ formattedDate, weekTypeString }) => {
-  const isMobile = useIsMobile(480);
+const Header: React.FC<HeaderProps> = ({ formattedDate, weekTypeString, scheduleTitle, onReset }) => {
   const { theme } = useTheme();
 
   return (
-    <header className="text-center">
-      {isMobile || <h1 className={`text-4xl md:text-5xl font-bold ${theme.colors.cardHeader} tracking-tight`}>Расписание занятий</h1>}
+    <header className="relative text-center">
+      <h1 className="text-2xl md:text-4xl font-bold  ${theme.colors.cardHeader}  tracking-tight">{scheduleTitle}</h1>
       <div
-        className={`mt-${isMobile ? "2" : "4"} flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-4`}
+        className="mt-4 flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-4"
       >
-        <p className={`capitalize ${isMobile ? theme.colors.cardHeader : theme.colors.secondaryText} text-lg`}>{formattedDate}</p>
+        <p className={`capitalize ${theme.colors.secondaryText} text-lg`}>{formattedDate}</p>
         {ENABLE_STUDY_WEEKS && (
           <>
             <span className={`hidden sm:inline ${theme.colors.mutedText}`}>•</span>
@@ -29,6 +30,13 @@ const Header: React.FC<HeaderProps> = ({ formattedDate, weekTypeString }) => {
           </>
         )}
       </div>
+       <button 
+        onClick={onReset}
+        title="Сменить расписание"
+        className={`absolute top-0 right-0 p-2 rounded-full transition-colors duration-200 ${theme.colors.secondaryText} ${theme.colors.button.hoverBg} focus:outline-none ${theme.colors.ring}`}
+      >
+        <ChangeIcon />
+      </button>
     </header>
   );
 };

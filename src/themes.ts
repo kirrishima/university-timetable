@@ -1,35 +1,4 @@
-
-export interface Theme {
-  name: string;
-  colors: {
-    mainBg: string;
-    mainText: string;
-    cardBg: string;
-    cardHeader: string;
-    secondaryText: string;
-    mutedText: string;
-    primary: string;
-    primaryText: string;
-    primaryAccent: string;
-    primaryAccentLight: string;
-    primaryMuted: string;
-    primaryMutedBg: string;
-    primaryBorder: string;
-    primaryLightestBg: string;
-    ring: string;
-    button: {
-      hoverBg: string;
-      disabledBg: string;
-      disabledText: string;
-    };
-    classType: {
-      lecture: string;
-      seminar: string;
-      lab: string;
-    };
-    divider: string;
-  };
-}
+import type { Theme } from './types';
 
 // FIX: Define base themes in a separate object to avoid self-reference during initialization.
 const baseThemes: Record<string, Theme> = {

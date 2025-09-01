@@ -44,4 +44,13 @@ export type Schedule = {
   [key in DayKey]?: DaySchedule;
 };
 
-export type DateLike = string | Date | number | undefined | null;
+export interface ScheduleIdentifier {
+  faculty: string;
+  course: number;
+  group: number;
+  subgroup?: number;
+}
+
+export interface ScheduleEntry extends ScheduleIdentifier {
+  schedule: Schedule;
+}
