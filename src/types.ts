@@ -61,14 +61,14 @@ export interface ScheduleEntry extends ScheduleIdentifier {
 }
 
 export interface Professor {
-    fullName: string;
-    department: string;
-    imageUrl?: string;
+  fullName: string;
+  department: string;
+  imageUrl?: string;
 }
-  
+
 export interface ProfessorListEntry {
-    faculty: string;
-    professors: Professor[];
+  faculty: string;
+  professors: Professor[];
 }
 
 export interface ThemeColors {
@@ -98,6 +98,7 @@ export interface ThemeColors {
     lab: string;
   };
   divider: string;
+  navBarBg: string;
 }
 
 export interface Theme {

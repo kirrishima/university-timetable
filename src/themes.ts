@@ -31,6 +31,7 @@ const baseThemes: Record<string, Theme> = {
         lab: "bg-yellow-100 text-yellow-800",
       },
       divider: "border-slate-200",
+      navBarBg: "bg-white/80",
     },
   },
   rose: {
@@ -62,6 +63,7 @@ const baseThemes: Record<string, Theme> = {
         lab: "bg-fuchsia-100 text-fuchsia-800",
       },
       divider: "border-stone-200",
+      navBarBg: "bg-white/80",
     },
   },
   teal: {
@@ -93,6 +95,7 @@ const baseThemes: Record<string, Theme> = {
         lab: "bg-lime-100 text-lime-800",
       },
       divider: "border-slate-200",
+      navBarBg: "bg-white/80",
     },
   },
   amber: {
@@ -124,6 +127,7 @@ const baseThemes: Record<string, Theme> = {
         lab: "bg-yellow-100 text-yellow-800",
       },
       divider: "border-stone-200",
+      navBarBg: "bg-white/80",
     },
   },
   slate: {
@@ -155,6 +159,7 @@ const baseThemes: Record<string, Theme> = {
         lab: "bg-amber-900 text-amber-300",
       },
       divider: "border-slate-700",
+      navBarBg: "bg-slate-800/80",
     },
   },
   'dark-sky': {
@@ -186,6 +191,7 @@ const baseThemes: Record<string, Theme> = {
         lab: "bg-amber-900 text-amber-300",
       },
       divider: "border-slate-700",
+      navBarBg: "bg-slate-800/80",
     },
   },
 };

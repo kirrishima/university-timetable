@@ -1,6 +1,6 @@
-import React from 'react';
-import type { NavItemType } from '../types';
-import { useTheme } from '../contexts/ThemeContext';
+import React from "react";
+import type { NavItemType } from "../types";
+import { useTheme } from "../contexts/ThemeContext";
 
 interface NavItemProps {
   item: NavItemType;
@@ -10,7 +10,9 @@ interface NavItemProps {
 
 const NavItem: React.FC<NavItemProps> = ({ item, isActive, onClick }) => {
   const { theme } = useTheme();
-  const iconClasses = `w-6 h-6 transition-colors duration-200 ${isActive ? theme.colors.primaryText : theme.colors.mutedText} group-hover:${isActive ? theme.colors.primaryText : theme.colors.primaryMuted}`;
+  const iconClasses = `w-6 h-6 transition-colors duration-200 ${
+    isActive ? theme.colors.primaryText : theme.colors.mutedText
+  } `;
 
   return (
     <button
@@ -20,18 +22,19 @@ const NavItem: React.FC<NavItemProps> = ({ item, isActive, onClick }) => {
         h-12 px-3 rounded-full 
         transition-all duration-300 ease-in-out
         overflow-hidden
-        ${isActive ? `w-36 ${theme.colors.primary}` : `w-12 bg-transparent hover:${theme.colors.button.hoverBg}`}
+        ${isActive ? `w-40 ${theme.colors.primary}` : `w-12 bg-transparent ${theme.colors.button.hoverBg}`}
       `}
       aria-label={item.label}
     >
-      <div className="flex-shrink-0">
-        {React.cloneElement(item.icon, { className: iconClasses })}
-      </div>
+      {/* Icon */}
+      <div className="flex-shrink-0">{React.cloneElement(item.icon, { className: iconClasses })}</div>
+
+      {/* Label */}
       <span
         className={`
-          ml-3 text-sm font-semibold whitespace-nowrap
+          ml-3 text-sm font-semibold whitespace-nowrap ${theme.colors.primaryText}
           transition-opacity duration-200 delay-100
-          ${isActive ? `opacity-100 ${theme.colors.primaryText}` : 'opacity-0'}
+          ${isActive ? "opacity-100" : "opacity-0"}
         `}
       >
         {item.label}
