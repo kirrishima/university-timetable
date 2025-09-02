@@ -52,10 +52,22 @@ export interface ScheduleIdentifier {
   course: number;
   group: number;
   subgroup?: number;
+  universityName: string;
 }
 
 export interface ScheduleEntry extends ScheduleIdentifier {
   schedule: Schedule;
+}
+
+export interface Professor {
+    fullName: string;
+    department: string;
+    imageUrl?: string;
+}
+  
+export interface ProfessorListEntry {
+    faculty: string;
+    professors: Professor[];
 }
 
 export interface ThemeColors {

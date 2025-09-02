@@ -1,48 +1,61 @@
-
 import React from 'react';
 import { ThemeProvider, useTheme } from './contexts/ThemeContext';
 import { useSchedule } from './hooks/useSchedule';
 import SetupScreen from './screens/SetupScreen';
-import ScheduleScreen from './screens/ScheduleScreen';
 import { ALL_SCHEDULES } from './data/schedules';
 import type { ScheduleEntry } from './types';
+import AppTabs from './components/AppTabs';
+import { ALL_PROFESSORS } from './data/professors';
 
 const AppContent: React.FC = () => {
-  const { theme } = useTheme();
-  const { selectedSchedule, saveSchedule, clearSchedule } = useSchedule();
+    const { theme } = useTheme();
+    const { selectedSchedule, saveSchedule, clearSchedule } = useSchedule();
 
-  const handleScheduleSelect = (schedule: ScheduleEntry) => {
-    const { faculty, facultyShort, course, group, subgroup } = schedule;
-    saveSchedule({ faculty, facultyShort, course, group, subgroup });
-  };
+    const scheduleData: ScheduleEntry | undefined = React.useMemo(() => {
+        if (!selectedSchedule) return undefined;
+        return ALL_SCHEDULES.find(s =>
+            s.faculty === selectedSchedule.faculty &&
+            s.course === selectedSchedule.course &&
+            s.group === selectedSchedule.group &&
+            s.subgroup === selectedSchedule.subgroup &&
+            s.universityName === selectedSchedule.universityName
+        );
+    }, [selectedSchedule]);
 
-  const scheduleData = selectedSchedule 
-    ? ALL_SCHEDULES.find(
-        s => 
-          s.faculty === selectedSchedule.faculty &&
-          s.course === selectedSchedule.course &&
-          s.group === selectedSchedule.group &&
-          s.subgroup === selectedSchedule.subgroup
-      )
-    : null;
+    const professorsData = React.useMemo(() => {
+        if (!scheduleData) return [];
+        return ALL_PROFESSORS.find(p => p.faculty === scheduleData.faculty)?.professors || [];
+    }, [scheduleData]);
 
-  return (
-    <div className={`min-h-screen font-sans ${theme.colors.mainBg} ${theme.colors.mainText} transition-colors duration-300`}>
-      {scheduleData ? (
-        <ScheduleScreen scheduleData={scheduleData} onReset={clearSchedule} />
-      ) : (
-        <SetupScreen onScheduleSelect={handleScheduleSelect} />
-      )}
-    </div>
-  );
+    const handleScheduleSelect = (schedule: ScheduleEntry) => {
+        const { schedule: _, ...identifier } = schedule;
+        saveSchedule(identifier);
+    };
+
+    const handleReset = () => {
+        clearSchedule();
+    };
+
+    return (
+        <div className={`min-h-screen ${theme.colors.mainBg} ${theme.colors.mainText}`}>
+            {scheduleData ? (
+                <AppTabs
+                    scheduleData={scheduleData}
+                    professorsData={professorsData}
+                    onReset={handleReset}
+                />
+            ) : (
+                <SetupScreen onScheduleSelect={handleScheduleSelect} />
+            )}
+        </div>
+    );
 };
 
-const App: React.FC = () => {
-  return (
+
+const App: React.FC = () => (
     <ThemeProvider>
-      <AppContent />
+        <AppContent />
     </ThemeProvider>
-  );
-};
+);
 
 export default App;
