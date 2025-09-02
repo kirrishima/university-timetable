@@ -1,93 +1,117 @@
-import React, { useState, useEffect } from 'react';
-import type { Professor } from '../types';
-import { useTheme } from '../contexts/ThemeContext';
+import React, { useState, useEffect } from "react";
+import type { Professor } from "../types";
+import { useTheme } from "../contexts/ThemeContext";
 
 interface ProfessorCardProps {
-    professor: Professor;
-    universityName: string;
+  professor: Professor;
+  universityName: string;
 }
 
 const ImageWithFallback: React.FC<{ src?: string; alt: string; className: string }> = ({ src, alt, className }) => {
-    const [imgSrc, setImgSrc] = useState<string | undefined>(undefined);
-    const [isLoading, setIsLoading] = useState(true);
-    const { theme } = useTheme();
+  const [imgSrc, setImgSrc] = useState<string | undefined>(undefined);
+  const [isLoading, setIsLoading] = useState(true);
+  const { theme } = useTheme();
 
-    const placeholder = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23a0aec0'%3E%3Cpath d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/%3E%3C/svg%3E";
+  const placeholder =
+    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23a0aec0'%3E%3Cpath d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/%3E%3C/svg%3E";
 
-    useEffect(() => {
-        setIsLoading(true);
-        if (src) {
-            const img = new Image();
-            img.src = src;
-            img.onload = () => {
-                setImgSrc(src);
-                setIsLoading(false);
-            };
-            img.onerror = () => {
-                setImgSrc(placeholder);
-                setIsLoading(false);
-            };
-        } else {
-            setImgSrc(placeholder);
-            setIsLoading(false);
-        }
-    }, [src, placeholder]);
-
-    if (isLoading) {
-        const isDark = theme.name.includes('dark') || theme.name.includes('slate');
-        return <div className={`${className} ${isDark ? 'bg-slate-700' : 'bg-slate-200'} animate-pulse`}></div>;
+  useEffect(() => {
+    setIsLoading(true);
+    if (src) {
+      const img = new Image();
+      img.src = src;
+      img.onload = () => {
+        setImgSrc(src);
+        setIsLoading(false);
+      };
+      img.onerror = () => {
+        setImgSrc(placeholder);
+        setIsLoading(false);
+      };
+    } else {
+      setImgSrc(placeholder);
+      setIsLoading(false);
     }
+  }, [src, placeholder]);
 
-    return <img src={imgSrc} alt={alt} className={className} />;
+  if (isLoading) {
+    const isDark = theme.name.includes("dark") || theme.name.includes("slate");
+    return <div className={`${className} ${isDark ? "bg-slate-700" : "bg-slate-200"} animate-pulse`}></div>;
+  }
+
+  return <img src={imgSrc} alt={alt} className={className} />;
 };
 
-
 const GoogleIcon: React.FC = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" viewBox="0 0 48 48">
-        <path fill="#4285F4" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8c-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4C12.955 4 4 12.955 4 24s8.955 20 20 20s20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"/>
-    </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" className="h-4 w-4 mr-2">
+    <path
+      fill="#fff"
+      d="M44.59 4.21a63.28 63.28 0 004.33 120.9 67.6 67.6 0 0032.36.35 57.13 57.13 0 0025.9-13.46 57.44 57.44 0 0016-26.26 74.33 74.33 0 001.61-33.58H65.27v24.69h34.47a29.72 29.72 0 01-12.66 19.52 36.16 36.16 0 01-13.93 5.5 41.29 41.29 0 01-15.1 0A37.16 37.16 0 0144 95.74a39.3 39.3 0 01-14.5-19.42 38.31 38.31 0 010-24.63 39.25 39.25 0 019.18-14.91A37.17 37.17 0 0176.13 27a34.28 34.28 0 0113.64 8q5.83-5.8 11.64-11.63c2-2.09 4.18-4.08 6.15-6.22A61.22 61.22 0 0087.2 4.59a64 64 0 00-42.61-.38z"
+    />
+    <path
+      fill="#e33629"
+      d="M44.59 4.21a64 64 0 0142.61.37 61.22 61.22 0 0120.35 12.62c-2 2.14-4.11 4.14-6.15 6.22Q95.58 29.23 89.77 35a34.28 34.28 0 00-13.64-8 37.17 37.17 0 00-37.46 9.74 39.25 39.25 0 00-9.18 14.91L8.76 35.6A63.53 63.53 0 0144.59 4.21z"
+    />
+    <path
+      fill="#f8bd00"
+      d="M3.26 51.5a62.93 62.93 0 015.5-15.9l20.73 16.09a38.31 38.31 0 000 24.63q-10.36 8-20.73 16.08a63.33 63.33 0 01-5.5-40.9z"
+    />
+    <path
+      fill="#587dbd"
+      d="M65.27 52.15h59.52a74.33 74.33 0 01-1.61 33.58 57.44 57.44 0 01-16 26.26c-6.69-5.22-13.41-10.4-20.1-15.62a29.72 29.72 0 0012.66-19.54H65.27c-.01-8.22 0-16.45 0-24.68z"
+    />
+    <path
+      fill="#319f43"
+      d="M8.75 92.4q10.37-8 20.73-16.08A39.3 39.3 0 0044 95.74a37.16 37.16 0 0014.08 6.08 41.29 41.29 0 0015.1 0 36.16 36.16 0 0013.93-5.5c6.69 5.22 13.41 10.4 20.1 15.62a57.13 57.13 0 01-25.9 13.47 67.6 67.6 0 01-32.36-.35 63 63 0 01-23-11.59A63.73 63.73 0 018.75 92.4z"
+    />
+  </svg>
 );
 
-
 const ProfessorCard: React.FC<ProfessorCardProps> = ({ professor, universityName }) => {
-    const { theme } = useTheme();
+  const { theme } = useTheme();
 
-    const handleSearch = () => {
-        const query = `${professor.fullName} ${universityName}`;
-        window.open(`https://www.google.com/search?q=${encodeURIComponent(query)}`, '_blank', 'noopener,noreferrer');
-    };
+  const handleSearch = () => {
+    const query = `${professor.fullName} ${universityName}`;
+    window.open(`https://www.google.com/search?q=${encodeURIComponent(query)}`, "_blank", "noopener,noreferrer");
+  };
 
-    return (
-        <div className={`p-4 rounded-2xl shadow-md h-full ${theme.colors.cardBg} flex flex-row items-center sm:flex-col sm:p-6 sm:text-center sm:justify-between`}>
-            <div className="flex-shrink-0">
-                <ImageWithFallback
-                    src={professor.imageUrl}
-                    alt={professor.fullName}
-                    className="w-16 h-16 sm:w-24 sm:h-24 rounded-full object-cover object-center shadow-md sm:mx-auto"
-                />
-            </div>
+  return (
+    <div
+      className={`p-4 rounded-2xl shadow-md h-full ${theme.colors.cardBg} flex flex-row items-center sm:flex-col sm:p-6 sm:text-center sm:justify-between`}
+    >
+      <div className="flex-shrink-0">
+        <ImageWithFallback
+          src={professor.imageUrl}
+          alt={professor.fullName}
+          className="w-16 h-16 sm:w-24 sm:h-24 rounded-full object-cover object-center shadow-md sm:mx-auto"
+        />
+      </div>
 
-            <div className="ml-4 flex-grow flex flex-col justify-center sm:ml-0 sm:mt-4">
-                <div className="flex-grow">
-                     <h3 className={`text-base text-left sm:text-center sm:text-lg font-bold ${theme.colors.cardHeader}`}>{professor.fullName}</h3>
-                    <p className={`mt-1 text-sm text-left sm:text-center ${theme.colors.secondaryText}`}>{professor.department}</p>
-                </div>
-                <button
-                    onClick={handleSearch}
-                    className={`
+      <div className="ml-4 flex-grow flex flex-col justify-center sm:ml-0 sm:mt-4">
+        <div className="flex-grow">
+          <h3 className={`text-base text-left sm:text-center sm:text-lg font-bold ${theme.colors.cardHeader}`}>
+            {professor.fullName}
+          </h3>
+          <p className={`mt-1 text-sm text-left sm:text-center ${theme.colors.secondaryText}`}>
+            {professor.department}
+          </p>
+        </div>
+        <button
+          onClick={handleSearch}
+          className={`
                         mt-2 sm:mt-4 w-full flex items-center justify-center py-2 px-4 border border-transparent rounded-md shadow-sm
                         text-sm font-medium transition duration-150 ease-in-out
-                        focus:outline-none focus:ring-2 focus:ring-offset-2
-                        ${theme.colors.ring} ${theme.colors.primaryMutedBg} ${theme.colors.primaryMuted} hover:opacity-90
+                        focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2
+                        ${theme.colors.ring} ${theme.colors.primaryMutedBg} ${theme.colors.primaryMuted} md:hover:opacity-90
                     `}
-                >
-                    <GoogleIcon />
-                    <span className="sm:hidden">Искать</span>
-                    <span className="hidden sm:inline">Искать в Google</span>
-                </button>
-            </div>
-        </div>
-    );
+        >
+          <GoogleIcon />
+          <span className="sm:hidden">Искать</span>
+          <span className="hidden sm:inline">Искать в Google</span>
+        </button>
+      </div>
+    </div>
+  );
 };
 
 export default ProfessorCard;
