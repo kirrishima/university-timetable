@@ -3,7 +3,6 @@ import type { Professor, ScheduleEntry } from "../types";
 import ProfessorCard from "../components/ProfessorCard";
 import { useTheme } from "../contexts/ThemeContext";
 import Header from "../components/Header";
-import { useUniversityWeek } from "../hooks/useUniversityWeek";
 import useIsMobile from "../hooks/useIsMobile";
 
 interface ProfessorsScreenProps {
@@ -15,7 +14,6 @@ interface ProfessorsScreenProps {
 const ProfessorsScreen: React.FC<ProfessorsScreenProps> = ({ professors, scheduleData }) => {
   const { theme } = useTheme();
   const [searchTerm, setSearchTerm] = useState("");
-  const { formattedDate, weekTypeString } = useUniversityWeek();
   const isMobile = useIsMobile(460);
 
   const facultyPart = isMobile ? scheduleData.facultyShort : scheduleData.faculty;
@@ -61,7 +59,7 @@ const ProfessorsScreen: React.FC<ProfessorsScreenProps> = ({ professors, schedul
 
   return (
     <div className="container mx-auto p-4 md:p-8 max-w-5xl">
-      <Header formattedDate={formattedDate} weekTypeString={weekTypeString} scheduleTitle={scheduleTitle} />
+      <Header scheduleTitle={scheduleTitle} />
       <main className="mt-8">
         <div className="relative mb-6">
           <input

@@ -1,7 +1,6 @@
 import React from "react";
 import Header from "../components/Header";
 import ThemeSwitcher from "../components/ThemeSwitcher";
-import { useUniversityWeek } from "../hooks/useUniversityWeek";
 import type { ScheduleEntry } from "../types";
 import { useTheme } from "../contexts/ThemeContext";
 import ThemePreview from "../components/ThemePreview";
@@ -13,12 +12,11 @@ interface SettingsScreenProps {
 }
 
 const SettingsScreen: React.FC<SettingsScreenProps> = ({ onReset }) => {
-  const { formattedDate, weekTypeString } = useUniversityWeek();
   const { theme } = useTheme();
 
   return (
     <div className="container mx-auto p-4 md:p-8 max-w-5xl">
-      <Header formattedDate={formattedDate} weekTypeString={weekTypeString} scheduleTitle="Настройки" />
+      <Header scheduleTitle="Настройки" />
       <main className="mt-8 space-y-8">
         <div className={`p-6 rounded-2xl shadow-md ${theme.colors.cardBg}`}>
           <h2 className={`text-xl font-bold mb-4 ${theme.colors.cardHeader}`}>Управление расписанием</h2>

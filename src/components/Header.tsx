@@ -3,8 +3,8 @@ import { ENABLE_STUDY_WEEKS } from "../constants";
 import { useTheme } from "../contexts/ThemeContext";
 
 interface HeaderProps {
-  formattedDate: string;
-  weekTypeString: string;
+  formattedDate?: string;
+  weekTypeString?: string;
   scheduleTitle: string;
 }
 
@@ -17,8 +17,8 @@ const Header: React.FC<HeaderProps> = ({ formattedDate, weekTypeString, schedule
       <div className="text-center">
         <h1 className={`text-2xl md:text-4xl font-bold ${theme.colors.cardHeader} tracking-tight`}>{scheduleTitle}</h1>
         <div className="mt-4 flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-4">
-          <p className={`capitalize ${theme.colors.secondaryText} text-md`}>{formattedDate}</p>
-          {ENABLE_STUDY_WEEKS && (
+          {formattedDate && <p className={`capitalize ${theme.colors.secondaryText} text-md`}>{formattedDate}</p>}
+          {ENABLE_STUDY_WEEKS && weekTypeString && (
             <>
               <span className={`hidden sm:inline ${theme.colors.mutedText}`}>•</span>
               <p
