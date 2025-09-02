@@ -6,43 +6,42 @@ export const ALL_PROFESSORS: ProfessorListEntry[] = [
         professors: [
             {
                 fullName: 'Дятко Александр Аркадьевич',
-                department: 'Кафедра информатики',
-                imageUrl: 'https://www.bsuir.by/get-photo/100032_100109_1.jpg'
+                department: 'Кафедра информатики и веб-дизайна',
+                imageUrl: 'https://wiki.belstu.by/_media/dyatko.jpg?w=200&tok=8c3b2c'
             },
             {
                 fullName: 'Нистюк Ольга Александровна',
-                department: 'Кафедра информатики',
-                imageUrl: 'https://www.bsuir.by/get-photo/100032_100109_16.jpg'
+                department: 'Кафедра информационных систем и технологий',
+                imageUrl: 'https://isit.belstu.by/wp-content/uploads/2020/09/nistjuk-225x300.png'
             },
             {
                 fullName: 'Хартанович Алина Александровна',
-                department: 'Кафедра информатики',
-                imageUrl: 'https://www.bsuir.by/get-photo/100032_100109_17.jpg'
+                department: 'Кафедра информационных систем и технологий',
+                imageUrl: 'https://belstu.by/images/sotrudnikam/personal-page/xartanovich.jpg'
             },
             {
                 fullName: 'Смелов Владимир Владиславович',
-                department: 'Кафедра информатики',
-                imageUrl: 'https://www.bsuir.by/get-photo/100032_100109_12.jpg'
+                department: 'Кафедра программной инженерии',
+                imageUrl: 'https://isit.belstu.by/wp-content/uploads/2019/09/1_6-e1569849581862.jpg'
             },
             {
-                fullName: 'Криштаносов Владимир Борисович',
-                department: 'Кафедра философии',
-                imageUrl: 'https://www.bsuir.by/get-photo/100032_100101_11.jpg'
+                fullName: 'Криштаносов В.Б.',
+                department: ''
             },
             {
                 fullName: 'Гурин Николай Иванович',
                 department: 'Кафедра информатики',
-                // No image URL to test fallback
+                imageUrl: 'https://isit.belstu.by/wp-content/uploads/2019/10/gurin-768x1024.png'
             },
             {
                 fullName: 'Шиман Дмитрий Васильевич',
-                department: 'Кафедра ИПиЭ',
-                imageUrl: 'https://www.bsuir.by/get-photo/100032_100110_13.jpg'
+                department: 'Кафедра программной инженерии',
+                imageUrl: 'https://belstu.by/images/sotrudnikam/personal-page/shiman-1.jpg'
             },
             {
                 fullName: 'Бернацкий Павел Владимирович',
-                department: 'Кафедра информатики',
-                imageUrl: 'invalid-url-to-test-fallback.jpg' // Invalid URL
+                department: 'Кафедра информационных систем и технологий',
+                imageUrl: 'https://isit.belstu.by/wp-content/uploads/2020/10/9a84cd85-8d95-4bf3-abb3-0ce4f07a14cb-300x279.jpg' 
             },
         ],
     },

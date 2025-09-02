@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import type { Professor, ScheduleEntry } from "../types";
 import ProfessorCard from "../components/ProfessorCard";
 import { useTheme } from "../contexts/ThemeContext";
@@ -9,7 +9,7 @@ import useIsMobile from "../hooks/useIsMobile";
 interface ProfessorsScreenProps {
   professors: Professor[];
   scheduleData: ScheduleEntry;
-  onReset: () => void;
+  onReset?: () => void;
 }
 
 const ProfessorsScreen: React.FC<ProfessorsScreenProps> = ({ professors, scheduleData }) => {
@@ -23,10 +23,41 @@ const ProfessorsScreen: React.FC<ProfessorsScreenProps> = ({ professors, schedul
 
   const normalizedSearchTerm = useMemo(() => searchTerm.toLowerCase(), [searchTerm]);
 
-  const hasVisibleProfessors = useMemo(() => {
-    if (!normalizedSearchTerm) return professors.length > 0;
-    return professors.some((p) => p.fullName.toLowerCase().includes(normalizedSearchTerm));
+  const groupedProfessors = useMemo(() => {
+    if (!professors || professors.length === 0) return [] as { dept: string; items: Professor[] }[];
+
+    const filtered = normalizedSearchTerm
+      ? professors.filter((p) => p.fullName?.toLowerCase().includes(normalizedSearchTerm))
+      : [...professors];
+
+    const sorted = [...filtered].sort((a, b) => {
+      const aDept = (a.department || a.department || (a as any).kafedraName || "Нет информации").toString();
+      const bDept = (b.department || b.department || (b as any).kafedraName || "Нет информации").toString();
+
+      const deptCompare = aDept.localeCompare(bDept, "ru");
+      if (deptCompare !== 0) return deptCompare;
+
+      const aName = (a.fullName || "").toString();
+      const bName = (b.fullName || "").toString();
+      return aName.localeCompare(bName, "ru");
+    });
+
+    const map = new Map<string, Professor[]>();
+    for (const prof of sorted) {
+      const dept = (prof.department || prof.department || (prof as any).kafedraName || "Нет информации").toString();
+      if (!map.has(dept)) map.set(dept, []);
+      map.get(dept)!.push(prof);
+    }
+
+    const groups: { dept: string; items: Professor[] }[] = [];
+    for (const [dept, items] of map.entries()) {
+      groups.push({ dept, items });
+    }
+
+    return groups;
   }, [professors, normalizedSearchTerm]);
+
+  const hasVisibleProfessors = groupedProfessors.length > 0;
 
   return (
     <div className="container mx-auto p-4 md:p-8 max-w-5xl">
@@ -56,15 +87,22 @@ const ProfessorsScreen: React.FC<ProfessorsScreenProps> = ({ professors, schedul
         </div>
 
         {hasVisibleProfessors ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {professors.map((professor) => {
-              const isVisible = professor.fullName.toLowerCase().includes(normalizedSearchTerm);
-              return (
-                <div key={professor.fullName} className={!isVisible ? "hidden" : ""}>
-                  <ProfessorCard professor={professor} universityName={scheduleData.universityName} />
+          <div className="space-y-8">
+            {groupedProfessors.map((group) => (
+              <section key={group.dept}>
+                <h2 className={`mb-4 text-xl font-semibold ${theme.colors.cardHeader}`}>{group.dept}</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {group.items.map((professor, idx) => {
+                    const key = (professor as any).id ?? `${professor.fullName}-${idx}`;
+                    return (
+                      <div key={key}>
+                        <ProfessorCard professor={professor} universityName={scheduleData.universityName} />
+                      </div>
+                    );
+                  })}
                 </div>
-              );
-            })}
+              </section>
+            ))}
           </div>
         ) : (
           <div className={`mt-6 text-center ${theme.colors.cardBg} p-8 rounded-xl shadow-sm`}>
