@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import type { Professor } from '../types';
 import { useTheme } from '../contexts/ThemeContext';
 
@@ -7,16 +7,40 @@ interface ProfessorCardProps {
     universityName: string;
 }
 
-const ImageWithFallback: React.FC<{ src?: string, alt: string }> = ({ src, alt }) => {
-    const [imgSrc, setImgSrc] = useState(src);
+const ImageWithFallback: React.FC<{ src?: string; alt: string; className: string }> = ({ src, alt, className }) => {
+    const [imgSrc, setImgSrc] = useState<string | undefined>(undefined);
+    const [isLoading, setIsLoading] = useState(true);
+    const { theme } = useTheme();
+
     const placeholder = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23a0aec0'%3E%3Cpath d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/%3E%3C/svg%3E";
 
-    const onError = () => {
-        setImgSrc(placeholder);
-    };
+    useEffect(() => {
+        setIsLoading(true);
+        if (src) {
+            const img = new Image();
+            img.src = src;
+            img.onload = () => {
+                setImgSrc(src);
+                setIsLoading(false);
+            };
+            img.onerror = () => {
+                setImgSrc(placeholder);
+                setIsLoading(false);
+            };
+        } else {
+            setImgSrc(placeholder);
+            setIsLoading(false);
+        }
+    }, [src, placeholder]);
 
-    return <img src={imgSrc || placeholder} alt={alt} onError={onError} className="w-24 h-24 rounded-full mx-auto object-cover object-center shadow-md" />;
+    if (isLoading) {
+        const isDark = theme.name.includes('dark') || theme.name.includes('slate');
+        return <div className={`${className} ${isDark ? 'bg-slate-700' : 'bg-slate-200'} animate-pulse`}></div>;
+    }
+
+    return <img src={imgSrc} alt={alt} className={className} />;
 };
+
 
 const GoogleIcon: React.FC = () => (
     <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" viewBox="0 0 48 48">
@@ -34,24 +58,34 @@ const ProfessorCard: React.FC<ProfessorCardProps> = ({ professor, universityName
     };
 
     return (
-        <div className={`p-6 rounded-2xl shadow-md text-center flex flex-col justify-between h-full ${theme.colors.cardBg}`}>
-            <div>
-                <ImageWithFallback src={professor.imageUrl} alt={professor.fullName} />
-                <h3 className={`mt-4 text-lg font-bold ${theme.colors.cardHeader}`}>{professor.fullName}</h3>
-                <p className={`mt-1 text-sm ${theme.colors.secondaryText}`}>{professor.department}</p>
+        <div className={`p-4 rounded-2xl shadow-md h-full ${theme.colors.cardBg} flex flex-row items-center sm:flex-col sm:p-6 sm:text-center sm:justify-between`}>
+            <div className="flex-shrink-0">
+                <ImageWithFallback
+                    src={professor.imageUrl}
+                    alt={professor.fullName}
+                    className="w-16 h-16 sm:w-24 sm:h-24 rounded-full object-cover object-center shadow-md sm:mx-auto"
+                />
             </div>
-            <button
-                onClick={handleSearch}
-                className={`
-                    mt-4 w-full flex items-center justify-center py-2 px-4 border border-transparent rounded-md shadow-sm
-                    text-sm font-medium transition duration-150 ease-in-out
-                    focus:outline-none focus:ring-2 focus:ring-offset-2
-                    ${theme.colors.ring} ${theme.colors.primaryMutedBg} ${theme.colors.primaryMuted} hover:opacity-90
-                `}
-            >
-                <GoogleIcon />
-                Искать в Google
-            </button>
+
+            <div className="ml-4 flex-grow flex flex-col justify-center sm:ml-0 sm:mt-4">
+                <div className="flex-grow">
+                     <h3 className={`text-base text-left sm:text-center sm:text-lg font-bold ${theme.colors.cardHeader}`}>{professor.fullName}</h3>
+                    <p className={`mt-1 text-sm text-left sm:text-center ${theme.colors.secondaryText}`}>{professor.department}</p>
+                </div>
+                <button
+                    onClick={handleSearch}
+                    className={`
+                        mt-2 sm:mt-4 w-full flex items-center justify-center py-2 px-4 border border-transparent rounded-md shadow-sm
+                        text-sm font-medium transition duration-150 ease-in-out
+                        focus:outline-none focus:ring-2 focus:ring-offset-2
+                        ${theme.colors.ring} ${theme.colors.primaryMutedBg} ${theme.colors.primaryMuted} hover:opacity-90
+                    `}
+                >
+                    <GoogleIcon />
+                    <span className="sm:hidden">Искать</span>
+                    <span className="hidden sm:inline">Искать в Google</span>
+                </button>
+            </div>
         </div>
     );
 };

@@ -1,3 +1,4 @@
+import type { ReactElement } from 'react';
 
 export enum WeekType {
   FIRST = 'first',
@@ -102,4 +103,10 @@ export interface ThemeColors {
 export interface Theme {
   name: string;
   colors: ThemeColors;
+}
+
+export interface NavItemType {
+  id: string;
+  label: string;
+  icon: ReactElement<{ className?: string }>;
 }

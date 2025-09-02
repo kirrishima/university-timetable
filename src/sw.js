@@ -1,4 +1,4 @@
-const CACHE_NAME = 'university-timetable-v2';
+const CACHE_NAME = 'university-timetable-v4';
 
 const urlsToCache = [
   '/',
@@ -12,9 +12,11 @@ const urlsToCache = [
   '/hooks/useIsMobile.ts',
   '/contexts/ThemeContext.tsx',
   '/data/schedules.ts',
+  '/data/professors.ts',
   '/themes.ts',
   '/screens/SetupScreen.tsx',
   '/screens/ScheduleScreen.tsx',
+  '/screens/ProfessorsScreen.tsx',
   '/components/Header.tsx',
   '/components/DaySelector.tsx',
   '/components/ScheduleView.tsx',
@@ -23,6 +25,10 @@ const urlsToCache = [
   '/components/PairedClassCard.tsx',
   '/components/ClassDetails.tsx',
   '/components/ThemeSwitcher.tsx',
+  '/components/ProfessorCard.tsx',
+  '/components/AppTabs.tsx',
+  '/components/BottomNavBar.tsx',
+  '/components/NavItem.tsx',
   '/components/icons/ScheduleIcons.tsx',
   '/components/ui/Button.tsx',
   '/components/ui/Select.tsx',
@@ -53,6 +59,21 @@ self.addEventListener('fetch', event => {
 
         return cachedResponse || fetchPromise;
       });
+    })
+  );
+});
+
+self.addEventListener('activate', event => {
+  const cacheWhitelist = [CACHE_NAME];
+  event.waitUntil(
+    caches.keys().then(cacheNames => {
+      return Promise.all(
+        cacheNames.map(cacheName => {
+          if (cacheWhitelist.indexOf(cacheName) === -1) {
+            return caches.delete(cacheName);
+          }
+        })
+      );
     })
   );
 });
