@@ -15,13 +15,13 @@ export const DAY_MAP: Record<DayKey, Day> = {
 };
 
 export const SHORT_DAY_MAP: Record<DayKey, string> = {
-  monday: 'Пн',
-  tuesday: 'Вт',
-  wednesday: 'Ср',
-  thursday: 'Чт',
-  friday: 'Пт',
-  saturday: 'Сб',
-  sunday: 'Вс',
+    monday: 'Пн',
+    tuesday: 'Вт',
+    wednesday: 'Ср',
+    thursday: 'Чт',
+    friday: 'Пт',
+    saturday: 'Сб',
+    sunday: 'Вс',
 };
 
 export const DAY_ORDER: DayKey[] = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
@@ -29,44 +29,67 @@ export const DAY_ORDER: DayKey[] = ['monday', 'tuesday', 'wednesday', 'thursday'
 // Icons for Bottom Nav Bar
 // FIX: Rewrote component using React.createElement to avoid JSX syntax errors in a .ts file.
 const ScheduleIcon: React.FC<{ className?: string }> = ({ className }) => (
-  React.createElement('svg', {
-    xmlns: "http://www.w3.org/2000/svg",
-    className,
-    fill: "none",
-    viewBox: "0 0 24 24",
-    stroke: "currentColor",
-    strokeWidth: 2
-  },
-    React.createElement('path', {
-      strokeLinecap: "round",
-      strokeLinejoin: "round",
-      d: "M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-    })
-  )
+    React.createElement('svg', {
+        xmlns: "http://www.w3.org/2000/svg",
+        className,
+        fill: "none",
+        viewBox: "0 0 24 24",
+        stroke: "currentColor",
+        strokeWidth: 2
+    },
+        React.createElement('path', {
+            strokeLinecap: "round",
+            strokeLinejoin: "round",
+            d: "M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+        })
+    )
 );
 
 // FIX: Rewrote component using React.createElement to avoid JSX syntax errors in a .ts file.
 const ProfessorsIcon: React.FC<{ className?: string }> = ({ className }) => (
-  React.createElement('svg', {
-    xmlns: "http://www.w3.org/2000/svg",
-    className,
-    fill: "none",
-    viewBox: "0 0 24 24",
-    stroke: "currentColor",
-    strokeWidth: 2
-  },
-    React.createElement('path', {
-      strokeLinecap: "round",
-      strokeLinejoin: "round",
-      d: "M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0l-2.072-1.036A48.402 48.402 0 0112 3.493a48.402 48.402 0 0111.82 5.617l-2.072 1.036m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342"
-    }),
-    React.createElement('path', {
-      strokeLinecap: "round",
-      strokeLinejoin: "round",
-      d: "M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5z"
-    })
-  )
+    React.createElement('svg', {
+        xmlns: "http://www.w3.org/2000/svg",
+        className,
+        fill: "none",
+        viewBox: "0 0 24 24",
+        stroke: "currentColor",
+        strokeWidth: 2
+    },
+        React.createElement('path', {
+            strokeLinecap: "round",
+            strokeLinejoin: "round",
+            d: "M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0l-2.072-1.036A48.402 48.402 0 0112 3.493a48.402 48.402 0 0111.82 5.617l-2.072 1.036m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342"
+        }),
+        React.createElement('path', {
+            strokeLinecap: "round",
+            strokeLinejoin: "round",
+            d: "M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5z"
+        })
+    )
 );
+
+const SettingsIcon: React.FC<{ className?: string }> = ({ className }) => (
+    React.createElement('svg', {
+        xmlns: "http://www.w3.org/2000/svg",
+        className,
+        fill: "none",
+        viewBox: "0 0 24 24",
+        stroke: "currentColor",
+        strokeWidth: 2
+    },
+        React.createElement('path', {
+            strokeLinecap: "round",
+            strokeLinejoin: "round",
+            d: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+        }),
+        React.createElement('path', {
+            strokeLinecap: "round",
+            strokeLinejoin: "round",
+            d: "M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+        })
+    )
+);
+
 
 export const TAB_ITEMS: NavItemType[] = [
   {
@@ -81,4 +104,9 @@ export const TAB_ITEMS: NavItemType[] = [
     // FIX: Use React.createElement to avoid JSX syntax errors.
     icon: React.createElement(ProfessorsIcon),
   },
+  {
+    id: 'settings',
+    label: 'Настройки',
+    icon: React.createElement(SettingsIcon),
+  }
 ];

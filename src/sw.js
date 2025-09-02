@@ -1,4 +1,4 @@
-const CACHE_NAME = 'university-timetable-v4';
+const CACHE_NAME = 'university-timetable-v5';
 
 const urlsToCache = [
   '/',
@@ -17,6 +17,7 @@ const urlsToCache = [
   '/screens/SetupScreen.tsx',
   '/screens/ScheduleScreen.tsx',
   '/screens/ProfessorsScreen.tsx',
+  '/screens/SettingsScreen.tsx',
   '/components/Header.tsx',
   '/components/DaySelector.tsx',
   '/components/ScheduleView.tsx',
@@ -25,6 +26,7 @@ const urlsToCache = [
   '/components/PairedClassCard.tsx',
   '/components/ClassDetails.tsx',
   '/components/ThemeSwitcher.tsx',
+  '/components/ThemePreview.tsx',
   '/components/ProfessorCard.tsx',
   '/components/AppTabs.tsx',
   '/components/BottomNavBar.tsx',

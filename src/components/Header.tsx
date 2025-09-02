@@ -1,16 +1,14 @@
 import React from "react";
 import { ENABLE_STUDY_WEEKS } from "../constants";
 import { useTheme } from "../contexts/ThemeContext";
-import { ChangeIcon } from "./icons/ScheduleIcons";
 
 interface HeaderProps {
   formattedDate: string;
   weekTypeString: string;
   scheduleTitle: string;
-  onReset: () => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ formattedDate, weekTypeString, scheduleTitle, onReset }) => {
+const Header: React.FC<HeaderProps> = ({ formattedDate, weekTypeString, scheduleTitle }) => {
   const { theme } = useTheme();
 
   return (
@@ -32,15 +30,7 @@ const Header: React.FC<HeaderProps> = ({ formattedDate, weekTypeString, schedule
           )}
         </div>
       </div>
-      <div className="flex justify-self-end self-start">
-        <button
-          onClick={onReset}
-          title="Сменить расписание"
-          className={`p-2 rounded-full transition-colors duration-200 ${theme.colors.secondaryText} ${theme.colors.button.hoverBg} focus:outline-none ${theme.colors.ring}`}
-        >
-          <ChangeIcon />
-        </button>
-      </div>
+      <div />
     </header>
   );
 };

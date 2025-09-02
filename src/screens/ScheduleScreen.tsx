@@ -3,7 +3,6 @@ import Header from "../components/Header";
 import DaySelector from "../components/DaySelector";
 import ScheduleView from "../components/ScheduleView";
 import Controls from "../components/Controls";
-import ThemeSwitcher from "../components/ThemeSwitcher";
 import { useUniversityWeek } from "../hooks/useUniversityWeek";
 import { ENABLE_STUDY_WEEKS } from "../constants";
 import type { DayKey, WeekType, ScheduleEntry } from "../types";
@@ -14,7 +13,7 @@ interface ScheduleScreenProps {
   onReset: () => void;
 }
 
-const ScheduleScreen: React.FC<ScheduleScreenProps> = ({ scheduleData, onReset }) => {
+const ScheduleScreen: React.FC<ScheduleScreenProps> = ({ scheduleData }) => {
   const { formattedDate, weekType: currentAcademicWeek, weekTypeString, currentDayKey } = useUniversityWeek();
   const isMobile = useIsMobile(460);
   const [selectedDay, setSelectedDay] = useState<DayKey | "all">(currentDayKey);
@@ -43,7 +42,6 @@ const ScheduleScreen: React.FC<ScheduleScreenProps> = ({ scheduleData, onReset }
         formattedDate={formattedDate}
         weekTypeString={weekTypeString}
         scheduleTitle={scheduleTitle}
-        onReset={onReset}
       />
       <main className="mt-8">
         <div className="space-y-4">
@@ -66,9 +64,6 @@ const ScheduleScreen: React.FC<ScheduleScreenProps> = ({ scheduleData, onReset }
           displayWeek={displayWeek}
         />
       </main>
-      <footer className="text-center mt-12 text-sm">
-        <ThemeSwitcher />
-      </footer>
     </div>
   );
 };

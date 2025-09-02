@@ -12,7 +12,7 @@ interface ProfessorsScreenProps {
     onReset: () => void;
 }
 
-const ProfessorsScreen: React.FC<ProfessorsScreenProps> = ({ professors, scheduleData, onReset }) => {
+const ProfessorsScreen: React.FC<ProfessorsScreenProps> = ({ professors, scheduleData }) => {
     const { theme } = useTheme();
     const [searchTerm, setSearchTerm] = useState('');
     const { formattedDate, weekTypeString } = useUniversityWeek();
@@ -37,7 +37,6 @@ const ProfessorsScreen: React.FC<ProfessorsScreenProps> = ({ professors, schedul
                 formattedDate={formattedDate}
                 weekTypeString={weekTypeString}
                 scheduleTitle={scheduleTitle}
-                onReset={onReset}
             />
             <main className="mt-8">
                 <div className="relative mb-6">
