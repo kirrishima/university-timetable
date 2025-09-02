@@ -19,7 +19,7 @@ const baseThemes: Record<string, Theme> = {
       primaryMutedBg: "bg-indigo-100",
       primaryBorder: "border-indigo-200",
       primaryLightestBg: "bg-indigo-50",
-      ring: "focus:ring-indigo-500",
+      ring: "focus-visible:ring-indigo-500",
       button: {
         hoverBg: "hover:bg-slate-200",
         disabledBg: "bg-slate-300",
@@ -51,7 +51,7 @@ const baseThemes: Record<string, Theme> = {
       primaryMutedBg: "bg-rose-100",
       primaryBorder: "border-rose-200",
       primaryLightestBg: "bg-rose-50",
-      ring: "focus:ring-rose-500",
+      ring: "focus-visible:ring-rose-500",
       button: {
         hoverBg: "hover:bg-stone-200",
         disabledBg: "bg-stone-300",
@@ -83,7 +83,7 @@ const baseThemes: Record<string, Theme> = {
       primaryMutedBg: "bg-teal-100",
       primaryBorder: "border-teal-200",
       primaryLightestBg: "bg-teal-50",
-      ring: "focus:ring-teal-500",
+      ring: "focus-visible:ring-teal-500",
       button: {
         hoverBg: "hover:bg-slate-200",
         disabledBg: "bg-slate-300",
@@ -115,7 +115,7 @@ const baseThemes: Record<string, Theme> = {
       primaryMutedBg: "bg-amber-100",
       primaryBorder: "border-amber-300",
       primaryLightestBg: "bg-amber-50",
-      ring: "focus:ring-amber-500",
+      ring: "focus-visible:ring-amber-500",
       button: {
         hoverBg: "hover:bg-stone-200",
         disabledBg: "bg-stone-300",
@@ -147,7 +147,7 @@ const baseThemes: Record<string, Theme> = {
       primaryMutedBg: "bg-slate-700/50",
       primaryBorder: "border-slate-600",
       primaryLightestBg: "bg-slate-700/30",
-      ring: "focus:ring-slate-500",
+      ring: "focus-visible:ring-slate-500",
       button: {
         hoverBg: "hover:bg-slate-700",
         disabledBg: "bg-slate-600",
@@ -179,7 +179,7 @@ const baseThemes: Record<string, Theme> = {
       primaryMutedBg: "bg-sky-900/50",
       primaryBorder: "border-sky-700",
       primaryLightestBg: "bg-sky-900/30",
-      ring: "focus:ring-sky-500",
+      ring: "focus-visible:ring-sky-500",
       button: {
         hoverBg: "hover:bg-slate-700",
         disabledBg: "bg-slate-600",
@@ -208,7 +208,7 @@ export const themes: Record<string, Theme> = {
       primaryMutedBg: "bg-red-100",
       primaryBorder: "border-red-200",
       primaryLightestBg: "bg-red-50",
-      ring: "focus:ring-red-500",
+      ring: "focus-visible:ring-red-500",
     },
   },
   green: {
@@ -221,7 +221,7 @@ export const themes: Record<string, Theme> = {
       primaryMutedBg: "bg-green-100",
       primaryBorder: "border-green-200",
       primaryLightestBg: "bg-green-50",
-      ring: "focus:ring-green-500",
+      ring: "focus-visible:ring-green-500",
     },
   },
   sky: {
@@ -234,7 +234,7 @@ export const themes: Record<string, Theme> = {
       primaryMutedBg: "bg-sky-100",
       primaryBorder: "border-sky-200",
       primaryLightestBg: "bg-sky-50",
-      ring: "focus:ring-sky-500",
+      ring: "focus-visible:ring-sky-500",
     },
   },
   violet: {
@@ -247,7 +247,7 @@ export const themes: Record<string, Theme> = {
       primaryMutedBg: "bg-violet-100",
       primaryBorder: "border-violet-200",
       primaryLightestBg: "bg-violet-50",
-      ring: "focus:ring-violet-500",
+      ring: "focus-visible:ring-violet-500",
     },
   },
   'dark-red': {
@@ -260,7 +260,7 @@ export const themes: Record<string, Theme> = {
       primaryMutedBg: "bg-red-900/50",
       primaryBorder: "border-red-700",
       primaryLightestBg: "bg-red-900/30",
-      ring: "focus:ring-red-500",
+      ring: "focus-visible:ring-red-500",
     },
   },
   'dark-green': {
@@ -273,7 +273,7 @@ export const themes: Record<string, Theme> = {
       primaryMutedBg: "bg-green-900/50",
       primaryBorder: "border-green-700",
       primaryLightestBg: "bg-green-900/30",
-      ring: "focus:ring-green-500",
+      ring: "focus-visible:ring-green-500",
     },
   },
   'dark-violet': {
@@ -286,7 +286,7 @@ export const themes: Record<string, Theme> = {
       primaryMutedBg: "bg-violet-900/50",
       primaryBorder: "border-violet-700",
       primaryLightestBg: "bg-violet-900/30",
-      ring: "focus:ring-violet-500",
+      ring: "focus-visible:ring-violet-500",
     },
   },
 };
