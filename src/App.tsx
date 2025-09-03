@@ -24,6 +24,19 @@ const AppContent: React.FC = () => {
     previousThemeRef.current = theme;
   }, [theme]);
 
+  useEffect(() => {
+    let themeColorMeta = document.querySelector('meta[name="theme-color"]');
+    
+    if (!themeColorMeta) {
+      themeColorMeta = document.createElement('meta');
+      themeColorMeta.setAttribute('name', 'theme-color');
+      document.head.appendChild(themeColorMeta);
+    }
+    
+    themeColorMeta.setAttribute('content', theme.themeColorHex);
+
+  }, [theme]);
+
   const scheduleData: ScheduleEntry | undefined = React.useMemo(() => {
     if (!selectedSchedule) return undefined;
     return ALL_SCHEDULES.find(

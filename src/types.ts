@@ -103,6 +103,7 @@ export interface ThemeColors {
 
 export interface Theme {
   name: string;
+  themeColorHex: string,
   colors: ThemeColors;
 }
 

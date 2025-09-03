@@ -1,9 +1,23 @@
 import type { Theme } from './types';
 
+///ts ignore
+const themeColorsMap = {
+  'indigo-600': '#4f46e5',
+  'rose-600': '#e11d48',
+  'teal-600': '#0d9488',
+  'amber-500': '#f59e0b',
+  'slate-500': '#64748b',
+  'sky-500': '#0ea5e9',
+  'red-500': '#ef4444',
+  'green-500': '#22c55e',
+  'violet-500': '#8b5cf6',
+};
+
 // FIX: Define base themes in a separate object to avoid self-reference during initialization.
 const baseThemes: Record<string, Theme> = {
   indigo: {
     name: "Indigo",
+    themeColorHex: themeColorsMap['indigo-600'],
     colors: {
       mainBg: "bg-slate-50",
       mainText: "text-slate-800",
@@ -36,6 +50,7 @@ const baseThemes: Record<string, Theme> = {
   },
   rose: {
     name: "Rose",
+    themeColorHex: themeColorsMap['rose-600'],
     colors: {
       mainBg: "bg-stone-50",
       mainText: "text-stone-800",
@@ -68,6 +83,7 @@ const baseThemes: Record<string, Theme> = {
   },
   teal: {
     name: "Teal",
+    themeColorHex: themeColorsMap['teal-600'], 
     colors: {
       mainBg: "bg-slate-50",
       mainText: "text-slate-800",
@@ -100,6 +116,7 @@ const baseThemes: Record<string, Theme> = {
   },
   amber: {
     name: "Amber",
+    themeColorHex: themeColorsMap['amber-500'],
     colors: {
       mainBg: "bg-stone-100",
       mainText: "text-stone-800",
@@ -132,6 +149,7 @@ const baseThemes: Record<string, Theme> = {
   },
   slate: {
     name: "Slate",
+    themeColorHex: themeColorsMap['slate-500'],
     colors: {
       mainBg: "bg-slate-900",
       mainText: "text-slate-300",
@@ -164,6 +182,7 @@ const baseThemes: Record<string, Theme> = {
   },
   'dark-sky': {
     name: "Dark Sky",
+    themeColorHex: themeColorsMap['sky-500'],
     colors: {
       mainBg: "bg-slate-900",
       mainText: "text-slate-300",
@@ -200,6 +219,7 @@ export const themes: Record<string, Theme> = {
   ...baseThemes,
   red: {
     name: "Red",
+    themeColorHex: themeColorsMap['red-500'],
     colors: {      ...baseThemes.indigo.colors,
       primary: "bg-red-600",
       primaryAccent: "bg-red-500",
@@ -213,6 +233,7 @@ export const themes: Record<string, Theme> = {
   },
   green: {
     name: "Green",
+    themeColorHex: themeColorsMap['green-500'],
     colors: {      ...baseThemes.indigo.colors,
       primary: "bg-green-600",
       primaryAccent: "bg-green-500",
@@ -226,6 +247,7 @@ export const themes: Record<string, Theme> = {
   },
   sky: {
     name: "Sky",
+    themeColorHex: themeColorsMap['sky-500'],
     colors: {      ...baseThemes.indigo.colors,
       primary: "bg-sky-600",
       primaryAccent: "bg-sky-500",
@@ -239,6 +261,7 @@ export const themes: Record<string, Theme> = {
   },
   violet: {
     name: "Violet",
+    themeColorHex: themeColorsMap['violet-500'],
     colors: {      ...baseThemes.indigo.colors,
       primary: "bg-violet-600",
       primaryAccent: "bg-violet-500",
@@ -252,6 +275,7 @@ export const themes: Record<string, Theme> = {
   },
   'dark-red': {
     name: "Dark Red",
+    themeColorHex: themeColorsMap['red-500'],
     colors: {      ...baseThemes['dark-sky'].colors,
       primary: "bg-red-500",
       primaryAccent: "bg-red-600",
@@ -265,6 +289,7 @@ export const themes: Record<string, Theme> = {
   },
   'dark-green': {
     name: "Dark Green",
+    themeColorHex: themeColorsMap['green-500'],
     colors: {      ...baseThemes['dark-sky'].colors,
       primary: "bg-green-500",
       primaryAccent: "bg-green-600",
@@ -278,6 +303,7 @@ export const themes: Record<string, Theme> = {
   },
   'dark-violet': {
     name: "Dark Violet",
+    themeColorHex: themeColorsMap['violet-500'],
     colors: {      ...baseThemes['dark-sky'].colors,
       primary: "bg-violet-500",
       primaryAccent: "bg-violet-600",
