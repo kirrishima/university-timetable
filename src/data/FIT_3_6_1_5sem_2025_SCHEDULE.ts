@@ -1,6 +1,6 @@
 import { Schedule, WeekType } from "@/types";
 
-export const FIT_3_6_1_SCHEDULE: Schedule = {
+export const FIT_3_6_1_5sem_2025_SCHEDULE: Schedule = {
     monday: [
         {
             time: '08:00 - 9:25',

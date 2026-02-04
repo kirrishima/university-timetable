@@ -54,6 +54,7 @@ export interface ScheduleIdentifier {
   group: number;
   subgroup?: number;
   universityName: string;
+  semester: 'Осенний' | 'Весенний';
 }
 
 export interface ScheduleEntry extends ScheduleIdentifier {
