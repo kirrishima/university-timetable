@@ -34,5 +34,5 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: schedule-site/dist
-          destination_dir: .
+          destination_dir: timetable
           keep_files: true
