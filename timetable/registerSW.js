@@ -1,0 +1,1 @@
+if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('/university-timetable/timetable/sw.js', { scope: '/university-timetable/timetable/' })})}
