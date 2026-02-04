@@ -9,7 +9,7 @@ export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, '.', '');
     const appVersion = packageJson.version;
     return {
-      base: '/university-timetable/',
+      base: '/university-timetable/timetable/',
       plugins: [
         react(),
         tailwindcss(),
@@ -25,7 +25,7 @@ export default defineConfig(({ mode }) => {
             theme_color: '#4f46e5',
             background_color: '#f8fafc',
             display: 'standalone',
-            start_url: '/university-timetable/',
+            start_url: '/university-timetable/timetable/',
             icons: [
               {
                 src: 'https://cdn-icons-png.flaticon.com/512/32/32223.png',
