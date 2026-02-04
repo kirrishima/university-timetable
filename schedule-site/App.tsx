@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from "react";
 import { ThemeProvider, useTheme } from "./contexts/ThemeContext";
 import { useSchedule } from "./hooks/useSchedule";
@@ -45,7 +46,8 @@ const AppContent: React.FC = () => {
         s.course === selectedSchedule.course &&
         s.group === selectedSchedule.group &&
         s.subgroup === selectedSchedule.subgroup &&
-        s.universityName === selectedSchedule.universityName
+        s.universityName === selectedSchedule.universityName &&
+        s.semester === selectedSchedule.semester
     );
   }, [selectedSchedule]);
 
