@@ -1,0 +1,5 @@
+{
+  "name": "Schedule Generator Pro",
+  "description": "A professional tool for generating structured TypeScript schedule files for university groups, featuring multi-week support and instructor management.",
+  "requestFramePermissions": []
+}
