@@ -1,0 +1,15 @@
+{
+    "short_name": "Расписание",
+    "name": "Расписание Университета",
+    "icons": [
+        {
+            "src": "https://cdn-icons-png.flaticon.com/512/32/32223.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ],
+    "start_url": "/university-timetable/timetable/",
+    "display": "standalone",
+    "theme_color": "#4f46e5",
+    "background_color": "#f8fafc"
+}
