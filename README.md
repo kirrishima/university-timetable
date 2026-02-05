@@ -15,13 +15,13 @@
 5. Добавляем полученый файл в папку *./schedule-site/data/* вашего форк репозитория
 6. В файле *./schedule-site/data/schedules.ts* делаем следующие шаги:
 
-   6.1. В начале добавляем данную строку
+   1. В начале добавляем данную строку
 
    ```typescript
    import { Имя_рассписания } from './имя_файла_безрасширения';
    ```
 
-   6.2. В `export const ALL_SCHEDULES: ScheduleEntry[] = []` добавить своё рассписание(как в примере)
+   2. В `export const ALL_SCHEDULES: ScheduleEntry[] = []` добавить своё рассписание(как в примере)
 
    ```typescript
    {
