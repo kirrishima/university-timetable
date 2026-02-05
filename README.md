@@ -16,14 +16,14 @@
 6. В файле *./schedule-site/data/schedules.ts* делаем следующие шаги:
 
    1. В начале добавляем данную строку
-   <br/>
+      <br/>
 
    ```typescript
-   import { Имя_рассписания } from './имя_файла_безрасширения';
+   import { Имя_расписания } from './имя_файла_безрасширения';
    ```
 
-   2. В `export const ALL_SCHEDULES: ScheduleEntry[] = []` добавить своё рассписание(как в примере)
-   <br/>
+   2. В `export const ALL_SCHEDULES: ScheduleEntry[] = []` добавить своё расписание(как в примере)
+      <br/>
 
    ```typescript
    {
@@ -32,7 +32,7 @@
        course: 3,
        group: 6,
        subgroup: 1,
-       schedule: Имя_рассписания,
+       schedule: Имя_расписания,
        universityName: 'БГТУ',
        semester: 'Весенний'
    }
