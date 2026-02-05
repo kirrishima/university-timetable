@@ -16,12 +16,14 @@
 6. В файле *./schedule-site/data/schedules.ts* делаем следующие шаги:
 
    1. В начале добавляем данную строку
+   <br/>
 
    ```typescript
    import { Имя_рассписания } from './имя_файла_безрасширения';
    ```
 
    2. В `export const ALL_SCHEDULES: ScheduleEntry[] = []` добавить своё рассписание(как в примере)
+   <br/>
 
    ```typescript
    {
