@@ -183,7 +183,7 @@ const App: React.FC = () => {
       return `{ ${parts.join(", ")} }`;
     };
 
-    let code = `import { Schedule, WeekType } from './types';\n\n`;
+    let code = `import { Schedule, WeekType } from '@/types';\n\n`;
     code += `export const ${scheduleName}: Schedule = {\n`;
 
     DAYS_OF_WEEK.forEach((day) => {
