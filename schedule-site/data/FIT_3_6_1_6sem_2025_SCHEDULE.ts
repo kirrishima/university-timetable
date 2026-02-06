@@ -99,7 +99,7 @@ export const FIT_3_6_1_6sem_2025_SCHEDULE: Schedule = {
         },
         {
             time: '13:00 - 14:25',
-            details: { name: 'Администрирование и безопасность интернет систем', type: 'Лекция', location: '200-3а', instructor: 'Жук Я.А.' }
+            details: { name: 'Администрирование и безопасность интернет систем', type: 'Лекция', location: '408-2', instructor: 'Жук Я.А.' }
         },
     ],
 };
