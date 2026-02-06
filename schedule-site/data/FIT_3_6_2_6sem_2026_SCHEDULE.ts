@@ -17,7 +17,7 @@ export const FIT_3_6_2_6sem_2026_SCHEDULE: Schedule = {
         {
             time: '13:00 - 14:25',
             weeks: {
-                [WeekType.SECOND]: { name: 'Безопасность жизнедеятельности человека', type: 'Лекция', location: '151, 153-4', instructor: 'Кичкайло О.В.' },
+                [WeekType.SECOND]: { name: 'Безопасность жизнедеятельности человека', type: 'Лабораторная', location: '151, 153-4' },
             },
         },
     ],
@@ -48,7 +48,7 @@ export const FIT_3_6_2_6sem_2026_SCHEDULE: Schedule = {
         },
         {
             time: '11:25 - 12:50',
-            details: { name: 'Физическая культура', type: 'Лекция', location: '200-3а' }
+            details: { name: 'Физическая культура', type: 'Лекция', location: '' }
         },
     ],
     thursday: [
