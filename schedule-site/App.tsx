@@ -1,6 +1,7 @@
 
 import React, { useEffect, useRef } from "react";
 import { ThemeProvider, useTheme } from "./contexts/ThemeContext";
+import { ModalProvider } from "./contexts/ModalContext";
 import { useSchedule } from "./hooks/useSchedule";
 import SetupScreen from "./screens/SetupScreen";
 import { ALL_SCHEDULES } from "./data/schedules";
@@ -78,7 +79,9 @@ const AppContent: React.FC = () => {
 
 const App: React.FC = () => (
   <ThemeProvider>
-    <AppContent />
+    <ModalProvider>
+      <AppContent />
+    </ModalProvider>
   </ThemeProvider>
 );
 
