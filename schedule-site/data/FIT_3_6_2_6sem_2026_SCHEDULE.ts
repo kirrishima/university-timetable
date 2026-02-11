@@ -4,11 +4,11 @@ export const FIT_3_6_2_6sem_2026_SCHEDULE: Schedule = {
     monday: [
         {
             time: '08:00 - 09:25',
-            details: { name: 'Программирование интернет-серверов', type: 'Лабораторная', location: '309-1' }
+            details: { name: 'Программирование интернет-серверов', type: 'Лабораторная', location: '309-1', instructor: 'Авдеева В.Д.' }
         },
         {
             time: '09:35 - 11:00',
-            details: { name: 'Программирование серверных кроссплатформенных приложений', type: 'Лабораторная', location: '324-1' }
+            details: { name: 'Программирование серверных кроссплатформенных приложений', type: 'Лабораторная', location: '324-1', instructor: 'Смелов В.В.' }
         },
         {
             time: '11:25 - 12:50',
@@ -17,7 +17,7 @@ export const FIT_3_6_2_6sem_2026_SCHEDULE: Schedule = {
         {
             time: '13:00 - 14:25',
             weeks: {
-                [WeekType.SECOND]: { name: 'Безопасность жизнедеятельности человека', type: 'Лабораторная', location: '151, 153-4' },
+                [WeekType.SECOND]: { name: 'Безопасность жизнедеятельности человека', type: 'Лабораторная', location: '151, 153-4', instructor: 'Кичкайло О.В.' },
             },
         },
     ],
@@ -54,7 +54,7 @@ export const FIT_3_6_2_6sem_2026_SCHEDULE: Schedule = {
     thursday: [
         {
             time: '09:35 - 11:00',
-            details: { name: 'Тестирование программного обеспечения', type: 'Лабораторная', location: '209-1' }
+            details: { name: 'Тестирование программного обеспечения', type: 'Лабораторная', location: '209-1' , instructor: 'Цягунович Т.В.' }
         },
         {
             time: '11:25 - 12:50',
@@ -62,7 +62,7 @@ export const FIT_3_6_2_6sem_2026_SCHEDULE: Schedule = {
         },
         {
             time: '13:00 - 14:25',
-            details: { name: 'Администрирование и безопасность интернет систем', type: 'Лабораторная', location: '301-1' }
+            details: { name: 'Администрирование и безопасность интернет систем', type: 'Лабораторная', location: '301-1', instructor: 'Сазонова Д.В.' }
         },
     ],
     friday: [
@@ -74,11 +74,11 @@ export const FIT_3_6_2_6sem_2026_SCHEDULE: Schedule = {
         },
         {
             time: '09:35 - 11:00',
-            details: { name: 'Информационная безопасность', type: 'Лабораторная', location: '308-1' }
+            details: { name: 'Информационная безопасность', type: 'Лабораторная', location: '308-1', instructor: 'Савельева М.Г.' }
         },
         {
             time: '11:25 - 12:50',
-            details: { name: 'Технологии разработки веб-приложений', type: 'Лабораторная', location: '206-1' }
+            details: { name: 'Технологии разработки веб-приложений', type: 'Лабораторная', location: '206-1', instructor: 'Гурина К.С.' }
         },
     ],
     saturday: [
@@ -95,7 +95,7 @@ export const FIT_3_6_2_6sem_2026_SCHEDULE: Schedule = {
         },
         {
             time: '11:25 - 12:50',
-            details: { name: 'Проектирование и разработка баз данных интернет-приложений', type: 'Лабораторная', location: '206-1' }
+            details: { name: 'Проектирование и разработка баз данных интернет-приложений', type: 'Лабораторная', location: '206-1', instructor: 'Заянковский Д.В.' }
         },
         {
             time: '13:00 - 14:25',
