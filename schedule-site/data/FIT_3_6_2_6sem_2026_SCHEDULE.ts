@@ -62,14 +62,14 @@ export const FIT_3_6_2_6sem_2026_SCHEDULE: Schedule = {
         },
         {
             time: '13:00 - 14:25',
-            details: { name: 'Администрирование и безопасность интернет систем', type: 'Лабораторная', location: '301-1', instructor: 'Сазонова Д.В.' }
+            details: { name: 'Администрирование и безопасность интернет систем', type: 'Лабораторная', location: '209-1', instructor: 'Сазонова Д.В.' }
         },
     ],
     friday: [
         {
             time: '08:00 - 09:25',
             weeks: {
-                [WeekType.SECOND]: { name: 'Экономика IT-компании', type: 'Лабораторная', location: '204-1' },
+                [WeekType.SECOND]: { name: 'Экономика IT-компании', type: 'Лабораторная', location: '204-1', instructor: 'Пшебельская Л.Ю.' },
             },
         },
         {
