@@ -63,6 +63,40 @@ export const ALL_PROFESSORS: ProfessorListEntry[] = [
                 department: 'Кафедра программной инженерии',
                 imageUrl: 'https://belstu.by/userfolder/%D0%9A%D0%B0%D1%84%D0%B5%D0%B4%D1%80%D0%B0%20%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%BD%D0%BE%D0%B9%20%D0%B8%D0%BD%D0%B6%D0%B5%D0%BD%D0%B5%D1%80%D0%B8%D0%B8/photo-2025-09-29-13-37-27.jpg'
             },
+            {
+                fullName: 'Ледницкий Андрей Викентьевич',
+                department: 'Экономики и управления на предприятиях',
+                imageUrl: 'https://belstu.by/images/sotrudnikam/personal-page/2026/ledniczkij.jpg'
+            },
+            {
+                fullName: 'Евлаш Александр Иванович',
+                department: 'Организации производства и экономики недвижимости'
+            },
+            {
+                fullName: 'Улаcевич Николай Иванович',
+                department: 'Кафедра информационных систем и технологий',
+                imageUrl: 'https://belstu.by/images/sotrudnikam/personal-page/ulacevich.jpg'
+            },
+            {
+                fullName: 'Подручный Михаил Викторович',
+                department: 'Кафедра философии и права'
+            },
+            {
+                fullName: 'Подрез Алина Александровна',
+                department: 'Кафедра информационных систем и технологий'
+            },
+            {
+                fullName: 'Гончар Егор Андреевич',
+                department: 'Кафедра программной инженерии'
+            },
+            {
+                fullName: 'Сергиевич Ольга Александровна',
+                department: 'Кафедра физико-химических методов и обеспечения качества'
+            },
+            {
+                fullName: 'Ивашкова А.В.',
+                department: ''
+            },
         ],
     },
 ];
