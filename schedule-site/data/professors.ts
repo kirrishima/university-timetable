@@ -78,6 +78,20 @@ export const ALL_PROFESSORS: ProfessorListEntry[] = [
                 imageUrl: 'https://belstu.by/images/sotrudnikam/personal-page/ulacevich.jpg'
             },
             {
+                fullName: 'Ржеутcкая Надежда Викентьевна',
+                department: 'Кафедра информационных систем и технологий',
+                imageUrl: 'https://belstu.by/images/sotrudnikam/personal-page/rzheutskaya.png'
+            },            
+            {
+                fullName: 'Романенко Оксана Владимировна',
+                department: 'Кафедра организации производства и экономики недвижимости',
+                imageUrl: 'https://belstu.by/images/sotrudnikam/personal-page/romanenko-oksana-vladimirovna.jpg'
+            },
+            {
+                fullName: 'Заянковский Дмитрий Владимирович',
+                department: 'Кафедра информационных систем и технологий'
+            },
+            {
                 fullName: 'Подручный Михаил Викторович',
                 department: 'Кафедра философии и права'
             },
