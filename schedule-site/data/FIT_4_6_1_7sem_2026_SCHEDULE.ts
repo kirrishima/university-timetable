@@ -79,7 +79,7 @@ export const FIT_4_6_1_7sem_2026_SCHEDULE: Schedule = {
         {
             time: '08:00 - 09:25',
             weeks: {
-                [WeekType.FIRST]: { name: 'Управление IT-проектами', type: 'Семинар', location: '301-4' },
+                [WeekType.FIRST]: { name: 'Управление IT-проектами', type: 'Семинар', location: '301-1' },
                 [WeekType.SECOND]: { name: 'Основы бизнеса и права в информационных технологиях', type: 'Семинар', location: '430-4' },
             },
         },
