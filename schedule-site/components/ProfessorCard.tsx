@@ -19,6 +19,7 @@ const ImageWithFallback: React.FC<{ src?: string; alt: string; className: string
     setIsLoading(true);
     if (src) {
       const img = new Image();
+      img.referrerPolicy = "no-referrer";
       img.src = src;
       img.onload = () => {
         setImgSrc(src);
@@ -39,7 +40,7 @@ const ImageWithFallback: React.FC<{ src?: string; alt: string; className: string
     return <div className={`${className} ${isDark ? "bg-slate-700" : "bg-slate-200"} animate-pulse`}></div>;
   }
 
-  return <img src={imgSrc} alt={alt} className={className} />;
+  return <img src={imgSrc} alt={alt} className={className} referrerPolicy="no-referrer" />;
 };
 
 const GoogleIcon: React.FC = () => (
