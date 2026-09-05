@@ -14,7 +14,7 @@ export const FIT_4_6_2_7sem_2026_SCHEDULE: Schedule = {
             time: '11:25 - 12:50',
             weeks: {
                 [WeekType.FIRST]: { name: 'Основы бизнеса и права в информационных технологиях', type: 'Лекция', location: '200-3а', instructor: 'Ледницкий А.В.' },
-                [WeekType.SECOND]: { name: 'Управление IT- проектами', type: 'Лекция', location: '200-3а', instructor: 'Евлаш А.И.' },
+                [WeekType.SECOND]: { name: 'Управление IT-проектами', type: 'Лекция', location: '200-3а', instructor: 'Евлаш А.И.' },
             },
         },
         {
