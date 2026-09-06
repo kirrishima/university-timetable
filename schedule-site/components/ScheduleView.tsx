@@ -49,6 +49,67 @@ function parseDate(d: DateLike): Date | null {
   return isNaN(candidate.getTime()) ? null : candidate;
 }
 
+
+
+type ClassStatus = "past" | "current" | "future";
+
+function getClassStatus(
+  time: string,
+  dayKey: DayKey,
+  todayDayKey: DayKey,
+  isAllWeek: boolean
+): ClassStatus {
+
+  // Если "Вся неделя" — учитываем день недели
+  if (isAllWeek) {
+    const todayIndex = DAY_ORDER.indexOf(todayDayKey);
+    const dayIndex = DAY_ORDER.indexOf(dayKey);
+
+    if (dayIndex != todayIndex) {
+      return "future";
+    }
+   
+  }
+
+  // Если выбран конкретный день, который НЕ сегодня,
+  // вообще не проверяем время
+  if (!isAllWeek && dayKey !== todayDayKey) {
+    return "future";
+  }
+
+  // Здесь либо:
+  // 1. "Вся неделя" и сегодня
+  // 2. выбран сегодняшний день
+
+  const match = time.match(
+    /(\d{1,2}):(\d{2})\s*[-–—]\s*(\d{1,2}):(\d{2})/
+  );
+
+  if (!match) return "future";
+
+  const [, startHour, startMinute, endHour, endMinute] = match;
+
+  const now = new Date();
+
+  const start = new Date();
+  start.setHours(Number(startHour), Number(startMinute), 0, 0);
+
+  const end = new Date();
+  end.setHours(Number(endHour), Number(endMinute), 0, 0);
+
+  if (now < start) {
+    return "future";
+  }
+
+  if (now < end) {
+    return "current";
+  }
+
+  if(isAllWeek)
+    return "future";
+  return "past";
+}
+
 const ScheduleView: React.FC<ScheduleViewProps> = ({
   schedule,
   viewMode,
@@ -57,7 +118,28 @@ const ScheduleView: React.FC<ScheduleViewProps> = ({
   displayWeek,
 }) => {
   const { theme } = useTheme();
+
+
+  const [, setCurrentTime] = React.useState(new Date());
+
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 30000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  
   const dayKeysToDisplay = selectedDay === "all" ? DAY_ORDER : [selectedDay];
+
+  const today = new Date();
+
+  const todayDayIndex = today.getDay() === 0
+    ? 6
+    : today.getDay() - 1;
+
+  const todayDayKey = DAY_ORDER[todayDayIndex];
 
   const hasContentOnDay = (dayKey: DayKey): boolean => {
     const slots = schedule[dayKey] || [];
@@ -100,11 +182,13 @@ const ScheduleView: React.FC<ScheduleViewProps> = ({
                     return afterFrom && beforeUntil;
                   })
                   .map((slot, index) => (
-                    <ClassCard key={`${slot.time}-${index}`} details={slot.details!} time={slot.time} />
+                    <ClassCard key={`${slot.time}-${index}`} details={slot.details!} time={slot.time} 
+                      status={getClassStatus(slot.time, dayKey, todayDayKey, selectedDay === "all")}/>
                   ))
               : daySlots.map((slot, index) => {
                   if (slot.details && !slot.weeks) {
-                    return <ClassCard key={`${slot.time}-${index}`} details={slot.details} time={slot.time} />;
+                    return <ClassCard key={`${slot.time}-${index}`} details={slot.details} time={slot.time} 
+                      status={getClassStatus(slot.time, dayKey, todayDayKey, selectedDay === "all")}/>;
                   }
                   if (slot.weeks) {
                     return (
@@ -114,6 +198,7 @@ const ScheduleView: React.FC<ScheduleViewProps> = ({
                         sessions={slot.weeks}
                         commonDetails={slot.details}
                         currentAcademicWeek={currentAcademicWeek}
+                        status={getClassStatus(slot.time, dayKey, todayDayKey, selectedDay === "all")}
                       />
                     );
                   }

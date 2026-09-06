@@ -4,23 +4,23 @@ export const FIT_4_6_2_7sem_2026_SCHEDULE: Schedule = {
     monday: [
         {
             time: '08:00 - 09:25',
-            details: { name: 'Интеллектуальная обработка и анализ данных', type: 'Лабораторная', location: '322-1' }
+            details: { name: 'Интеллектуальная обработка и анализ данных', type: 'Лабораторная', location: '322-1', instructor: 'Сухорукова И.Г.' }
         },
         {
             time: '09:35 - 11:00',
-            details: { name: 'Проектирование интернет-систем', type: 'Лабораторная', location: '209-1' }
+            details: { name: 'Проектирование интернет-систем', type: 'Лабораторная', location: '209-1', instructor: 'Гончар Е.А.' }
         },
         {
             time: '11:25 - 12:50',
             weeks: {
                 [WeekType.FIRST]: { name: 'Основы бизнеса и права в информационных технологиях', type: 'Лекция', location: '200-3а', instructor: 'Ледницкий А.В.' },
-                [WeekType.SECOND]: { name: 'Управление IT- проектами', type: 'Лекция', location: '200-3а', instructor: 'Евлаш А.И.' },
+                [WeekType.SECOND]: { name: 'Управление IT-проектами', type: 'Лекция', location: '200-3а', instructor: 'Евлаш А.И.' },
             },
         },
         {
             time: '13:00 - 14:25',
             weeks: {
-                [WeekType.SECOND]: { name: 'Распределённые и облачные технологии', type: 'Лабораторная', location: '206-1' },
+                [WeekType.SECOND]: { name: 'Распределённые и облачные технологии', type: 'Лабораторная', location: '206-1', instructor: 'Сазонова Д.В.' },
             },
         },
     ],
@@ -35,24 +35,24 @@ export const FIT_4_6_2_7sem_2026_SCHEDULE: Schedule = {
         },
         {
             time: '11:25 - 12:50',
-            details: { name: 'Распределённые и облачные технологии', type: 'Лабораторная', location: '206-1' }
+            details: { name: 'Распределённые и облачные технологии', type: 'Лабораторная', location: '206-1', instructor: 'Сазонова Д.В.' }
         },
         {
             time: '13:00 - 14:25',
             weeks: {
-                [WeekType.FIRST]: { name: 'Интеллектуальная обработка и анализ данных', type: 'Лабораторная', location: '322-1' },
+                [WeekType.FIRST]: { name: 'Интеллектуальная обработка и анализ данных', type: 'Лабораторная', location: '322-1', instructor: 'Сухорукова И.Г.' },
             },
         },
     ],
     wednesday: [
         {
             time: '08:00 - 09:25',
-            details: { name: 'Корпоративные информационные системы', type: 'Лабораторная', location: '209-1' }
+            details: { name: 'Корпоративные информационные системы', type: 'Лабораторная', location: '209-1', instructor: 'Подрез А.А.' }
         },
         {
             time: '09:35 - 11:00',
             weeks: {
-                [WeekType.FIRST]: { name: 'Основы управления интеллектуальной собственностью', type: 'Семинар', location: '131-4' },
+                [WeekType.FIRST]: { name: 'Основы управления интеллектуальной собственностью', type: 'Семинар', location: '131-4', instructor: 'Ржеутская Н.В.' },
                 [WeekType.SECOND]: { name: 'Основы стандартизации оценки соответствия и метрология', type: 'Семинар', location: '406-3' },
             },
         },
@@ -67,7 +67,7 @@ export const FIT_4_6_2_7sem_2026_SCHEDULE: Schedule = {
     thursday: [
         {
             time: '08:00 - 09:25',
-            details: { name: 'Программирование веб-сервисов', type: 'Лабораторная', location: '206-1' }
+            details: { name: 'Программирование веб-сервисов', type: 'Лабораторная', location: '206-1', instructor: 'Некрасова А.П.'}
         },
         {
             time: '09:35 - 11:00',
@@ -76,7 +76,7 @@ export const FIT_4_6_2_7sem_2026_SCHEDULE: Schedule = {
         {
             time: '11:25 - 12:50',
             weeks: {
-                [WeekType.FIRST]: { name: 'Программирование мобильных приложений', type: 'Лабораторная', location: '206-1' },
+                [WeekType.FIRST]: { name: 'Программирование мобильных приложений', type: 'Лабораторная', location: '206-1', instructor: 'Заянковский Д.В.' },
             },
         },
     ],
@@ -84,13 +84,13 @@ export const FIT_4_6_2_7sem_2026_SCHEDULE: Schedule = {
         {
             time: '08:00 - 09:25',
             weeks: {
-                [WeekType.FIRST]: { name: 'Управление IT-проектами', type: 'Семинар', location: '301-1' },
+                [WeekType.FIRST]: { name: 'Управление IT-проектами', type: 'Семинар', location: '301-1', instructor: 'Романенко Оксана Владимировна'},
                 [WeekType.SECOND]: { name: 'Основы бизнеса и права в информационных технологиях', type: 'Семинар', location: '430-4' },
             },
         },
         {
             time: '09:35 - 11:00',
-            details: { name: 'Программирование мобильных приложений', type: 'Лабораторная', location: '206-1' }
+            details: { name: 'Программирование мобильных приложений', type: 'Лабораторная', location: '206-1', instructor: 'Заянковский Д.В.'}
         },
         {
             time: '11:25 - 12:50',
