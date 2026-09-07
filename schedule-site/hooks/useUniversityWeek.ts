@@ -1,4 +1,3 @@
-
 import { useMemo } from 'react';
 import type { DayKey } from '../types';
 import { WeekType } from '../types';
@@ -20,9 +19,20 @@ export const useUniversityWeek = (): UniversityWeekInfo => {
   }
   const academicYearStart = new Date(year, 8, 1);
 
-  const diffTime = now.getTime() - academicYearStart.getTime();
-  const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-  
+  const getMonday = (d: Date): Date => {
+    const date = new Date(d.getFullYear(), d.getMonth(), d.getDate());
+    const day = date.getDay();
+    const diff = day === 0 ? 6 : day - 1;
+    date.setDate(date.getDate() - diff);
+    return date;
+  };
+
+  const startWeekMonday = getMonday(academicYearStart);
+  const currentWeekMonday = getMonday(now);
+
+  const diffTime = currentWeekMonday.getTime() - startWeekMonday.getTime();
+  const diffDays = Math.round(diffTime / (1000 * 60 * 60 * 24));
+
   const weekNumber = Math.floor(diffDays / 7);
   
   const weekType = weekNumber % 2 === 0 ? WeekType.FIRST : WeekType.SECOND;
