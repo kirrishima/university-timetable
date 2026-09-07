@@ -81,7 +81,7 @@ const ClassDetails: React.FC<ClassDetailsProps> = ({ details }) => {
   return (
     <div className="space-y-2">
       <div className="flex flex-col sm:flex-row sm:items-center items-start gap-2">
-        <h3 className={`text-xl font-semibold ${isElective ? 'italic' : ''} ${theme.colors.cardHeader}`}>
+        <h3 className={`text-xl font-semibold} ${theme.colors.cardHeader}`}>
           {details.name}
         </h3>
         <span className={`px-2.5 py-0.5 text-xs font-medium rounded-full ${typeColor}`}>
