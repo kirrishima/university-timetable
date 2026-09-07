@@ -53,7 +53,7 @@ export const FIT_4_6_2_7sem_2026_SCHEDULE: Schedule = {
             time: '09:35 - 11:00',
             weeks: {
                 [WeekType.FIRST]: { name: 'Основы управления интеллектуальной собственностью', type: 'Семинар', location: '131-4', instructor: 'Ржеутская Н.В.' },
-                [WeekType.SECOND]: { name: 'Основы стандартизации оценки соответствия и метрология', type: 'Семинар', location: '406-3' },
+                [WeekType.SECOND]: { name: 'Основы стандартизации оценки соответствия и метрология', type: 'Семинар', location: '406-3', isElective: true },
             },
         },
         {
@@ -67,7 +67,7 @@ export const FIT_4_6_2_7sem_2026_SCHEDULE: Schedule = {
     thursday: [
         {
             time: '08:00 - 09:25',
-            details: { name: 'Программирование веб-сервисов', type: 'Лабораторная', location: '206-1', instructor: 'Некрасова А.П.'}
+            details: { name: 'Программирование веб-сервисов', type: 'Лабораторная', location: '206-1', instructor: 'Некрасова А.П.' }
         },
         {
             time: '09:35 - 11:00',
@@ -84,13 +84,13 @@ export const FIT_4_6_2_7sem_2026_SCHEDULE: Schedule = {
         {
             time: '08:00 - 09:25',
             weeks: {
-                [WeekType.FIRST]: { name: 'Управление IT-проектами', type: 'Семинар', location: '301-1', instructor: 'Романенко Оксана Владимировна'},
+                [WeekType.FIRST]: { name: 'Управление IT-проектами', type: 'Семинар', location: '301-1', instructor: 'Романенко Оксана Владимировна' },
                 [WeekType.SECOND]: { name: 'Основы бизнеса и права в информационных технологиях', type: 'Семинар', location: '430-4' },
             },
         },
         {
             time: '09:35 - 11:00',
-            details: { name: 'Программирование мобильных приложений', type: 'Лабораторная', location: '206-1', instructor: 'Заянковский Д.В.'}
+            details: { name: 'Программирование мобильных приложений', type: 'Лабораторная', location: '206-1', instructor: 'Заянковский Д.В.' }
         },
         {
             time: '11:25 - 12:50',
@@ -104,7 +104,7 @@ export const FIT_4_6_2_7sem_2026_SCHEDULE: Schedule = {
         {
             time: '08:00 - 09:25',
             weeks: {
-                [WeekType.FIRST]: { name: 'Основы стандартизации оценки соответствия и метрология', type: 'Лекция', location: '200-3а', instructor: 'Сергиевич О.А.' },
+                [WeekType.FIRST]: { name: 'Основы стандартизации оценки соответствия и метрология', type: 'Лекция', location: '200-3а', instructor: 'Сергиевич О.А.', isElective: true },
             },
         },
         {

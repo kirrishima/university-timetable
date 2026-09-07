@@ -28,6 +28,7 @@ export interface ClassDetailsData {
   instructor?: string;
   visibleFrom?: DateLike;
   visibleUntil?: DateLike;
+  isElective?: boolean;
 }
 
 export interface AlternatingClasses {
@@ -97,6 +98,7 @@ export interface ThemeColors {
     lecture: string;
     seminar: string;
     lab: string;
+    elective: string;
   };
   divider: string;
   navBarBg: string;
@@ -106,6 +108,12 @@ export interface Theme {
   name: string;
   themeColorHex: string,
   colors: ThemeColors;
+}
+
+export interface AppSettings {
+  pastClassDimmingEnabled: boolean;
+  pastClassDimmingPercent: number;
+  showElectiveClasses: boolean;
 }
 
 export interface NavItemType {

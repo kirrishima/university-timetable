@@ -50,7 +50,7 @@ export const FIT_4_6_1_7sem_2026_SCHEDULE: Schedule = {
             time: '09:35 - 11:00',
             weeks: {
                 [WeekType.FIRST]: { name: 'Основы управления интеллектуальной собственностью', type: 'Семинар', location: '131-4' },
-                [WeekType.SECOND]: { name: 'Основы стандартизации оценки соответствия и метрология', type: 'Семинар', location: '406-3' },
+                [WeekType.SECOND]: { name: 'Основы стандартизации оценки соответствия и метрология', type: 'Семинар', location: '406-3', isElective: true },
             },
         },
         {
@@ -99,7 +99,7 @@ export const FIT_4_6_1_7sem_2026_SCHEDULE: Schedule = {
         {
             time: '08:00 - 09:25',
             weeks: {
-                [WeekType.FIRST]: { name: 'Основы стандартизации оценки соответствия и метрология', type: 'Лекция', location: '200-3а', instructor: 'Сергиевич О.А.' },
+                [WeekType.FIRST]: { name: 'Основы стандартизации оценки соответствия и метрология', type: 'Лекция', location: '200-3а', instructor: 'Сергиевич О.А.', isElective: true },
             },
         },
         {

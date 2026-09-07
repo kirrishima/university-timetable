@@ -3,6 +3,7 @@ import type { ClassDetailsData } from "../types";
 import ClassDetails from "./ClassDetails";
 import useIsMobile from "../hooks/useIsMobile";
 import { useTheme } from "../contexts/ThemeContext";
+import { useSettings } from "../contexts/SettingsContext";
 
 interface ClassCardProps {
   details: ClassDetailsData;
@@ -17,9 +18,16 @@ const ClassCard: React.FC<ClassCardProps> = ({
 }) => {
   const isMobile = useIsMobile();
   const { theme } = useTheme();
+  const { settings } = useSettings();
+  const isElective = !!details.isElective;
+
+  const pastDimStyle: React.CSSProperties =
+    status === "past" && settings.pastClassDimmingEnabled
+      ? { opacity: Math.max(0.15, 1 - settings.pastClassDimmingPercent / 100) }
+      : {};
 
   const statusClasses = {
-    past: "opacity-70",
+    past: "",
     current: `${theme.colors.primaryLightestBg} current-class-glow`,
     future: "",
   }[status];
@@ -45,9 +53,12 @@ const ClassCard: React.FC<ClassCardProps> = ({
       </style>
 
       <div
-        className={`custom-card shadow-sm ${theme.colors.cardBg} ${statusClasses} transition-all duration-300`}
+        className={`custom-card shadow-sm ${theme.colors.cardBg} ${statusClasses} ${
+          isElective ? `border-2 border-dashed ${theme.colors.primaryBorder}` : ""
+        } transition-all duration-300`}
+        style={pastDimStyle}
       >
-        <div className={`w-2 ${theme.colors.primaryAccent}`}></div>
+        <div className={`w-2 ${isElective ? "bg-transparent" : theme.colors.primaryAccent}`}></div>
 
         <div
           className={`p-5 flex flex-col md:flex-row items-start md:items-center gap-${

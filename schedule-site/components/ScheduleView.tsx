@@ -5,6 +5,7 @@ import ClassCard from "./ClassCard";
 import PairedClassCard from "./PairedClassCard";
 import { DAY_MAP, DAY_ORDER } from "../constants";
 import { useTheme } from "../contexts/ThemeContext";
+import { useSettings } from "../contexts/SettingsContext";
 
 interface ScheduleViewProps {
   schedule: Schedule;
@@ -110,6 +111,8 @@ function getClassStatus(
   return "past";
 }
 
+const isElective = (details?: { isElective?: boolean } | null): boolean => !!details?.isElective;
+
 const ScheduleView: React.FC<ScheduleViewProps> = ({
   schedule,
   viewMode,
@@ -118,6 +121,8 @@ const ScheduleView: React.FC<ScheduleViewProps> = ({
   displayWeek,
 }) => {
   const { theme } = useTheme();
+  const { settings } = useSettings();
+  const showElectives = settings.showElectiveClasses;
 
 
   const [, setCurrentTime] = React.useState(new Date());
@@ -144,9 +149,25 @@ const ScheduleView: React.FC<ScheduleViewProps> = ({
   const hasContentOnDay = (dayKey: DayKey): boolean => {
     const slots = schedule[dayKey] || [];
     if (viewMode === "single") {
-      return slots.some((slot) => slot.details || slot.weeks?.[displayWeek]);
+      return slots.some((slot) => {
+        const details = slot.details || slot.weeks?.[displayWeek];
+        if (!details) return false;
+        if (!showElectives && isElective(details)) return false;
+        return true;
+      });
     }
-    return slots.length > 0;
+    return slots.some((slot) => {
+      if (slot.details && !slot.weeks) {
+        return showElectives || !isElective(slot.details);
+      }
+      if (slot.weeks) {
+        const hasFirst = slot.weeks.first && (showElectives || !isElective(slot.weeks.first));
+        const hasSecond = slot.weeks.second && (showElectives || !isElective(slot.weeks.second));
+        const hasCommon = !!slot.details;
+        return !!(hasFirst || hasSecond || hasCommon);
+      }
+      return false;
+    });
   };
 
   const hasAnyContent = dayKeysToDisplay.some(hasContentOnDay);
@@ -170,6 +191,7 @@ const ScheduleView: React.FC<ScheduleViewProps> = ({
               ? daySlots
                   .map((slot) => ({ ...slot, details: slot.details || slot.weeks?.[displayWeek] }))
                   .filter((slot) => slot.details)
+                  .filter((slot) => showElectives || !isElective(slot.details))
                   .filter((slot) => {
                     const from = parseDate(slot.details!.visibleFrom);
                     const until = parseDate(slot.details!.visibleUntil);
@@ -187,15 +209,27 @@ const ScheduleView: React.FC<ScheduleViewProps> = ({
                   ))
               : daySlots.map((slot, index) => {
                   if (slot.details && !slot.weeks) {
+                    if (!showElectives && isElective(slot.details)) return null;
                     return <ClassCard key={`${slot.time}-${index}`} details={slot.details} time={slot.time} 
                       status={getClassStatus(slot.time, dayKey, todayDayKey, selectedDay === "all")}/>;
                   }
                   if (slot.weeks) {
+                    const visibleSessions = showElectives
+                      ? slot.weeks
+                      : {
+                          first: slot.weeks.first && !isElective(slot.weeks.first) ? slot.weeks.first : undefined,
+                          second: slot.weeks.second && !isElective(slot.weeks.second) ? slot.weeks.second : undefined,
+                        };
+
+                    if (!visibleSessions.first && !visibleSessions.second && !slot.details) {
+                      return null;
+                    }
+
                     return (
                       <PairedClassCard
                         key={`${slot.time}-${index}`}
                         time={slot.time}
-                        sessions={slot.weeks}
+                        sessions={visibleSessions}
                         commonDetails={slot.details}
                         currentAcademicWeek={currentAcademicWeek}
                         status={getClassStatus(slot.time, dayKey, todayDayKey, selectedDay === "all")}

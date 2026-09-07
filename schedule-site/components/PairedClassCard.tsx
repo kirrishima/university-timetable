@@ -2,6 +2,7 @@ import React from 'react';
 import type { ClassDetailsData, AlternatingClasses, WeekType } from '../types';
 import ClassDetails from './ClassDetails';
 import { useTheme } from '../contexts/ThemeContext';
+import { useSettings } from '../contexts/SettingsContext';
 
 interface PairedClassCardProps {
   time: string;
@@ -17,14 +18,13 @@ const WeekRow: React.FC<{
   isCurrent: boolean;
 }> = ({ weekLabel, details, isCurrent }) => {
   const { theme } = useTheme();
+  const isElective = !!details.isElective;
 
   return (
     <div
-      className={`p-4 transition-colors duration-300 ${
-        isCurrent
-          ? `${theme.colors.primaryLightestBg} rounded-lg`
-          : ''
-      }`}
+      className={`p-4 transition-colors duration-300 rounded-lg ${
+        isCurrent ? theme.colors.primaryLightestBg : ''
+      } ${isElective ? `border-2 border-dashed ${theme.colors.primaryBorder}` : ''}`}
     >
       <p
         className={`text-xs font-bold uppercase tracking-wider ${
@@ -51,13 +51,19 @@ const PairedClassCard: React.FC<PairedClassCardProps> = ({
   status
 }) => {
   const { theme } = useTheme();
+  const { settings } = useSettings();
 
   const sessionFirst = sessions.first;
   const sessionSecond = sessions.second;
   const hasBothAlternating = sessionFirst && sessionSecond;
 
+  const pastDimStyle: React.CSSProperties =
+    status === "past" && settings.pastClassDimmingEnabled
+      ? { opacity: Math.max(0.15, 1 - settings.pastClassDimmingPercent / 100) }
+      : {};
+
   const statusClasses = {
-    past: "opacity-70",
+    past: "",
     current: `${theme.colors.primaryLightestBg} current-class-glow`,
     future: "",
   }[status];
@@ -84,6 +90,7 @@ const PairedClassCard: React.FC<PairedClassCardProps> = ({
 
       <div
         className={`custom-card shadow-sm ${theme.colors.cardBg} ${statusClasses} transition-all duration-300`}
+        style={pastDimStyle}
       >
         <div className={`w-2 ${theme.colors.primaryAccent}`}></div>
 

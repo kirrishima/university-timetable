@@ -11,8 +11,25 @@ interface ClassDetailsProps {
 const typeKeyMap: Record<ClassType, keyof typeof themes.indigo.colors.classType> = {
   'Лекция': 'lecture',
   'Семинар': 'seminar',
-  'Лабораторная': 'lab'
+  'Лабораторная': 'lab',
 };
+
+const OptionalIcon: React.FC = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    className="h-3.5 w-3.5 mr-1"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+    strokeWidth={2}
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+    />
+  </svg>
+);
 
 const LocationIcon: React.FC = () => {
   const { theme } = useTheme();
@@ -59,14 +76,26 @@ const ClassDetails: React.FC<ClassDetailsProps> = ({ details }) => {
   const { theme } = useTheme();
   const typeKey = typeKeyMap[details.type] || 'lab';
   const typeColor = theme.colors.classType[typeKey];
+  const isElective = !!details.isElective;
 
   return (
     <div className="space-y-2">
       <div className="flex flex-col sm:flex-row sm:items-center items-start gap-2">
-        <h3 className={`text-xl font-semibold ${theme.colors.cardHeader}`}>{details.name}</h3>
+        <h3 className={`text-xl font-semibold ${isElective ? 'italic' : ''} ${theme.colors.cardHeader}`}>
+          {details.name}
+        </h3>
         <span className={`px-2.5 py-0.5 text-xs font-medium rounded-full ${typeColor}`}>
           {details.type}
         </span>
+        {isElective && (
+          <span
+            className={`inline-flex items-center px-2.5 py-0.5 text-xs font-semibold rounded-full ${theme.colors.classType.elective}`}
+            title="Посещение необязательно"
+          >
+            <OptionalIcon />
+            Необязательно к посещению
+          </span>
+        )}
       </div>
       <div className={`flex flex-col sm:flex-row text-sm ${theme.colors.secondaryText} gap-x-4 gap-y-1`}>
         {details.location && details.location !== "" && (
